@@ -9,7 +9,7 @@ export class EntityType {
         return this;
     }
 
-    get properties() : PropertyType [] {
+    get properties(): PropertyType [] {
         return this.propertyTypes;
     }
 }

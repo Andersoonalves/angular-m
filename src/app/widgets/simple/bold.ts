@@ -1,12 +1,12 @@
 import { Component, Input } from '@angular/core';
 
-import { EntityType } from '../../meta/entity.type'
+import { EntityType } from '../../meta/entity.type';
 
 @Component({
-    selector: 'bold-text',
+    selector: 'm-bold-text',
     template: '<b>{{entitytype.name}}</b>',
 })
-export class BoldText {
+export class BoldTextComponent {
 
     @Input()  public entitytype: EntityType;
 };

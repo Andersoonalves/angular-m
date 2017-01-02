@@ -17,14 +17,13 @@ import { DynamicTemplateBuilder } from './template.builder';
 
 export class MetaModule {
 
-    static forRoot()
-    {
+    static forRoot() {
         return {
             ngModule: MetaModule,
             providers: [ // singletons accross the whole app
               DynamicTemplateBuilder,
               DynamicTypeBuilder
-            ], 
+            ],
         };
     }
 }
