@@ -4,8 +4,8 @@ import { OnChanges, SimpleChange, ComponentFactory } from '@angular/core';
 
 import { DynamicTypeBuilder } from './type.builder';
 import { DynamicTemplateBuilder }  from './template.builder';
-
 import { EntityType } from './entity.type';
+import { MetadataService } from './metadata.service';
 
 
 @Component({
@@ -30,24 +30,18 @@ export class ForeachEntityTypeComponent implements AfterViewInit, OnChanges, OnD
     // until ngAfterViewInit, we cannot start (firstly) to process dynamic stuff
     protected wasViewInitialized = false;
 
-    // example entity ... to be recieved from other app parts
-    // this is kind of candiate for @Input
-    protected entitytypes = [
-        new EntityType('Customer'),
-        new EntityType('Product')
-    ];
-
 
     constructor(
       protected typeBuilder: DynamicTypeBuilder,
-      protected templateBuilder: DynamicTemplateBuilder
+      protected templateBuilder: DynamicTemplateBuilder,
+      private metadata: MetadataService
     ) {}
 
 
     public refreshContent(useBold = false) {
       this.destroyCurrentComponentRefs();
 
-      this.entitytypes.forEach( (entityType) => {
+      this.metadata.listEntityTypes().forEach( (entityType) => {
         let template = this.templateBuilder.prepareTemplate(entityType, useBold);
 
         this.typeBuilder
