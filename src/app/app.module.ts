@@ -6,31 +6,19 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { MetaModule } from './meta/meta.module';
-import { EntityTypeDetailsComponent } from './widgets/router/entitytype.details.component';
-import { HomeComponent } from './widgets/router/home.component';
-import { PageNotFoundComponent } from './not-found.component';
-
-
-const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: ':entitytypename', component: EntityTypeDetailsComponent },
-  { path: '**', component: PageNotFoundComponent }
-];
+import { AppRoutingModule } from './app-routing.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    EntityTypeDetailsComponent,
-    PageNotFoundComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     MetaModule.forRoot(),
-    RouterModule.forRoot(appRoutes)
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
