@@ -9,8 +9,8 @@ export class MetadataService {
   private entityTypes: EntityType [] = [];
   private rules: Rule [] = [];
 
-  describe(name: string): EntityType {
-    let entityType: EntityType = new EntityType(name);
+  describe(name: string, description: string): EntityType {
+    let entityType: EntityType = new EntityType(name, description);
     this.entityTypes.push(entityType);
     return entityType;
   }

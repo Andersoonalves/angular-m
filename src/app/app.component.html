@@ -1,4 +1,7 @@
-<h1>
-  {{title}}
-</h1>
-<mg-foreach-entity-type port="entitieslist"></mg-foreach-entity-type>
+<h1>{{title}}</h1>
+
+<nav>
+  <mg-foreach-entity-type port="entitytypes_menu"></mg-foreach-entity-type>
+</nav>
+<router-outlet></router-outlet>
+

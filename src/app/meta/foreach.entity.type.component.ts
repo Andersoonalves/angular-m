@@ -7,14 +7,11 @@ import { MetadataService } from './metadata.service';
 
 @Component({
   selector: 'mg-foreach-entity-type',
-  template: `<div #target></div>`,
+  template: '',
 })
 export class ForeachEntityTypeComponent extends AbstractPortComponent {
 
-    @ViewChild('target', {read: ViewContainerRef})
-    protected componentTarget: ViewContainerRef;
-
-    constructor(metadata: MetadataService,
+    constructor(metadata: MetadataService, private componentTarget: ViewContainerRef,
         protected compiler: ComponentFactoryResolver) {
       super(metadata);
     }
