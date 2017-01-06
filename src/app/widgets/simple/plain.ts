@@ -3,8 +3,8 @@ import { Component, Input } from '@angular/core';
 import { EntityType } from '../../meta/entity.type';
 
 @Component({
-    selector: 'm-plain-text',
-    template: '{{entitytype.name}}',
+    selector: 'mg-plain-text',
+    template: '{{entitytype.name}}<br>',
 })
 export class PlainTextComponent {
 

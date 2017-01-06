@@ -1,19 +1,23 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-// parts module
+// TODO declare this dependency in just one file
 import { SimpleModule }   from '../widgets/simple/simple.module';
+import { PlainTextComponent }   from '../widgets/simple/plain';
+import { BoldTextComponent }   from '../widgets/simple/bold';
 
 // detail stuff
 import { ForeachEntityTypeComponent } from './foreach.entity.type.component';
-import { DynamicTypeBuilder } from './type.builder';
-import { DynamicTemplateBuilder } from './template.builder';
 import { MetadataService } from './metadata.service';
 
 @NgModule({
   imports:      [ SimpleModule ],
   declarations: [ ForeachEntityTypeComponent ],
   exports:      [ ForeachEntityTypeComponent],
+  entryComponents: [
+      PlainTextComponent,
+      BoldTextComponent
+  ]
 })
 export class MetaModule {
 
@@ -21,8 +25,6 @@ export class MetaModule {
         return {
             ngModule: MetaModule,
             providers: [ // singletons accross the whole app
-              DynamicTemplateBuilder,
-              DynamicTypeBuilder,
               MetadataService
             ],
         };
