@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 
 import { MetadataService } from './meta/metadata.service';
-import { PlainTextComponent } from './widgets/simple/plain';
-import { BoldTextComponent } from './widgets/simple/bold';
+import { EntityTypeRouterComponent } from './widgets/router/entitytype.router';
+
+import { ProductService } from './domain/product.service';
+import { ClientService } from './domain/client.service';
 
 @Component({
   selector: 'mg-root',
@@ -10,23 +12,24 @@ import { BoldTextComponent } from './widgets/simple/bold';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
+
+  title = 'Example Application';
 
 
-  constructor(private metadata: MetadataService) {
-    this.describeDomainModel();
+  constructor(
+      private metadata: MetadataService,
+      private productService: ProductService,
+      private clientService: ClientService
+  ) {
+
+    this.metadata.addService(productService);
+    this.metadata.addService(clientService);
+
     this.defineRules();
   }
 
-  describeDomainModel() {
-    this.metadata.describe('Client');
-    this.metadata.describe('Factory');
-    this.metadata.describe('Product');
-  }
-
   defineRules() {
-    this.metadata.addRule('entitieslist', 'Product', BoldTextComponent);
-    this.metadata.addRule('entitieslist', '*', PlainTextComponent);
+    this.metadata.addRule('entitytypes_menu', '*', EntityTypeRouterComponent);
   }
 
 }

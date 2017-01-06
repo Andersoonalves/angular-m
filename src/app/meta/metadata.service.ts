@@ -2,30 +2,25 @@ import { Injectable, Type } from '@angular/core';
 
 import { EntityType } from './entity.type';
 import { Rule } from './rule';
+import { AbstractService } from './abstract.service';
 
 @Injectable()
 export class MetadataService {
 
-  private entityTypes: EntityType [] = [];
+  private entityTypes: { [name: string]: EntityType; } = {};
   private rules: Rule [] = [];
+  private services: { [entitytype: string]: AbstractService<any>; } = {};
 
-  describe(name: string): EntityType {
-    let entityType: EntityType = new EntityType(name);
-    this.entityTypes.push(entityType);
-    return entityType;
-  }
-
-  findEntityType(name: string): EntityType {
-    this.entityTypes.forEach( entityType => {
-      if (entityType.name === name) {
-        return entityType;
-      }
-    });
+  findEntityType(name: string): Promise<EntityType> {
+    let entityType = this.entityTypes[name];
+    if (entityType) {
+        return Promise.resolve(entityType);
+    }
     throw `EntityType not found for name ${name}`;
   }
 
   listEntityTypes(): EntityType[] {
-      return this.entityTypes;
+      return Object.keys(this.entityTypes).map( key => this.entityTypes[key]);
   }
 
   // Use Rule creation static methods
@@ -59,6 +54,20 @@ export class MetadataService {
     return (expression)
       ? new RegExp('^' + expression.split('*').join('.*') + '$').test(text)
       : false;
+  }
+
+  addService(service: AbstractService<any>) {
+    let entityType = service.describeEntityType();
+    this.addEntityType(entityType);
+    this.services[entityType.name] = service;
+  }
+
+  addEntityType(entityType: EntityType) {
+    this.entityTypes[entityType.name] = entityType;
+  }
+
+  getService(entitytype: string): AbstractService<any> {
+    return this.services[entitytype];
   }
 
 }

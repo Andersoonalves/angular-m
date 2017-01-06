@@ -6,6 +6,6 @@ export class AngularMPage {
   }
 
   getParagraphText() {
-    return element(by.css('m-root h1')).getText();
+    return element(by.css('mg-root h1')).getText();
   }
 }

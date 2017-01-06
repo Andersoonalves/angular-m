@@ -1,5 +1,5 @@
-import { Component, ViewChild, ViewContainerRef, Type } from '@angular/core';
-import { ComponentFactory, ComponentFactoryResolver } from '@angular/core';
+import { Component, ViewContainerRef } from '@angular/core';
+import { ComponentFactoryResolver } from '@angular/core';
 
 import { AbstractPortComponent } from './abstract.port.component';
 import { MetadataService } from './metadata.service';
@@ -7,14 +7,11 @@ import { MetadataService } from './metadata.service';
 
 @Component({
   selector: 'mg-foreach-entity-type',
-  template: `<div #target></div>`,
+  template: '',
 })
 export class ForeachEntityTypeComponent extends AbstractPortComponent {
 
-    @ViewChild('target', {read: ViewContainerRef})
-    protected componentTarget: ViewContainerRef;
-
-    constructor(metadata: MetadataService,
+    constructor(metadata: MetadataService, private componentTarget: ViewContainerRef,
         protected compiler: ComponentFactoryResolver) {
       super(metadata);
     }

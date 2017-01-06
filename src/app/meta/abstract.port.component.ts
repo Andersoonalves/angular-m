@@ -1,6 +1,6 @@
-import { Component, Input, ComponentRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, Input, ComponentRef } from '@angular/core';
 import { AfterViewInit, OnInit, OnDestroy }          from '@angular/core';
-import { OnChanges, SimpleChange, ComponentFactory } from '@angular/core';
+import { OnChanges, SimpleChange } from '@angular/core';
 
 import { EntityType } from './entity.type';
 import { MetadataService } from './metadata.service';
