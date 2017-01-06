@@ -1,46 +1,33 @@
-import { Component, ViewChild, ViewContainerRef } from '@angular/core';
-import { ComponentFactory } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef, Type } from '@angular/core';
+import { ComponentFactory, ComponentFactoryResolver } from '@angular/core';
 
 import { AbstractPortComponent } from './abstract.port.component';
-import { DynamicTypeBuilder } from './type.builder';
 import { MetadataService } from './metadata.service';
 
 
 @Component({
-  selector: 'm-foreach-entity-type',
-  template: `
-<div>
-  Check/uncheck to use PLAIN vs BOLD:
-  <input type="checkbox" #bold (click)="refreshContent(bold.checked)" /><hr />
-  <div #dynamicContentPlaceHolder></div>
-</div>
-`,
+  selector: 'mg-foreach-entity-type',
+  template: `<div #target></div>`,
 })
 export class ForeachEntityTypeComponent extends AbstractPortComponent {
 
-    // reference for a <div> with #dynamicContentPlaceHolder
-    @ViewChild('dynamicContentPlaceHolder', {read: ViewContainerRef})
-    protected dynamicComponentTarget: ViewContainerRef;
+    @ViewChild('target', {read: ViewContainerRef})
+    protected componentTarget: ViewContainerRef;
 
-    constructor(typeBuilder: DynamicTypeBuilder, metadata: MetadataService) {
-      super(typeBuilder, metadata);
+    constructor(metadata: MetadataService,
+        protected compiler: ComponentFactoryResolver) {
+      super(metadata);
     }
-
 
     public refreshContent() {
       super.refreshContent();
 
       this.metadata.listEntityTypes().forEach( (entityType) => {
         let componentType = this.metadata.getWidget(entityType, this.port);
-        this.typeBuilder
-          .createComponentFactory(componentType)
-          .then((factory: ComponentFactory<any>) => {
-            let componentRef =
-              this.dynamicComponentTarget.createComponent(factory);
-            this.componentRefs.push(componentRef);
-            let component = componentRef.instance;
-            component.entitytype = entityType;
-          });
+        let factory = this.compiler.resolveComponentFactory(componentType);
+        let componentRef = this.componentTarget.createComponent(factory);
+        this.componentRefs.push(componentRef);
+        componentRef.instance.entitytype = entityType;
         });
     }
 

@@ -8,7 +8,6 @@ import { BoldTextComponent }   from '../widgets/simple/bold';
 
 // detail stuff
 import { ForeachEntityTypeComponent } from './foreach.entity.type.component';
-import { DynamicTypeBuilder } from './type.builder';
 import { MetadataService } from './metadata.service';
 
 @NgModule({
@@ -26,7 +25,6 @@ export class MetaModule {
         return {
             ngModule: MetaModule,
             providers: [ // singletons accross the whole app
-              DynamicTypeBuilder,
               MetadataService
             ],
         };

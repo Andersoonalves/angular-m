@@ -5,7 +5,7 @@ import { PlainTextComponent } from './widgets/simple/plain';
 import { BoldTextComponent } from './widgets/simple/bold';
 
 @Component({
-  selector: 'm-root',
+  selector: 'mg-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
