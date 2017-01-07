@@ -3,6 +3,9 @@ import { Component } from '@angular/core';
 import { MetadataService } from './meta/metadata.service';
 import { EntityTypeRouterComponent } from './widgets/router/entitytype.router';
 
+import { ProductService } from './domain/product.service';
+import { ClientService } from './domain/client.service';
+
 @Component({
   selector: 'mg-root',
   templateUrl: './app.component.html',
@@ -13,15 +16,16 @@ export class AppComponent {
   title = 'Example Application';
 
 
-  constructor(private metadata: MetadataService) {
-    this.describeDomainModel();
-    this.defineRules();
-  }
+  constructor(
+      private metadata: MetadataService,
+      private productService: ProductService,
+      private clientService: ClientService
+  ) {
 
-  describeDomainModel() {
-    this.metadata.describe('Client', 'Clients');
-    this.metadata.describe('Factory', 'Factories');
-    this.metadata.describe('Product', 'Products');
+    this.metadata.addService(productService);
+    this.metadata.addService(clientService);
+
+    this.defineRules();
   }
 
   defineRules() {

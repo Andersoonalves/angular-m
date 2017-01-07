@@ -1,5 +1,6 @@
 import { NgModule }              from '@angular/core';
 import { RouterModule, Routes }  from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 import { EntityTypeDetailsComponent } from './widgets/router/entitytype.details.component';
 import { HomeComponent } from './widgets/router/home.component';
@@ -15,6 +16,7 @@ const appRoutes: Routes = [
 
 @NgModule({
   imports: [
+    CommonModule,
     RouterModule.forRoot(appRoutes)
   ],
   declarations: [
@@ -25,8 +27,8 @@ const appRoutes: Routes = [
   exports: [
     RouterModule,
     HomeComponent,
-      EntityTypeDetailsComponent,
-      PageNotFoundComponent
+    EntityTypeDetailsComponent,
+    PageNotFoundComponent
   ]
 })
 export class AppRoutingModule {}

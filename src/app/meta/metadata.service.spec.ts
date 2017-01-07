@@ -1,5 +1,6 @@
 import { MetadataService } from './metadata.service';
 import { MetadataServiceHelper } from './metadata.helper';
+import { EntityType } from './entity.type';
 import { PlainTextComponent } from '../widgets/simple/plain';
 import { BoldTextComponent } from '../widgets/simple/bold';
 
@@ -19,26 +20,26 @@ describe( 'Service: MetadataService', () => {
     });
 
     it( 'Add entities', () => {
-        service.describe('Product')
+        service.addEntityType(new EntityType('Product', 'Products')
             .property('description', 'string')
-            .property('price', 'number');
+            .property('price', 'number'));
 
-        service.describe('Customer')
+        service.addEntityType(new EntityType('Customer', 'Customers')
             .property('name', 'string')
-            .property('birthdate', 'date');
+            .property('birthdate', 'date'));
 
         helper.checkService();
         helper.checkEntityTypes(2, 'Product', 'Customer');
     });
 
     it( 'Add rules', () => {
-        service.describe('Product')
+        service.addEntityType(new EntityType('Product', 'Products')
             .property('description', 'string')
-            .property('price', 'number');
+            .property('price', 'number'));
 
-        service.describe('Customer')
+        service.addEntityType(new EntityType('Customer', 'Customers')
             .property('name', 'string')
-            .property('birthdate', 'date');
+            .property('birthdate', 'date'));
 
         service.addRule('entitieslist', 'Product', BoldTextComponent);
         service.addRule('entitieslist', '*', PlainTextComponent);

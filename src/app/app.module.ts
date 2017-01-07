@@ -7,7 +7,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { MetaModule } from './meta/meta.module';
 import { AppRoutingModule } from './app-routing.module';
-
+import { MetaRouterModule } from './widgets/router/metarouter.module';
+import { DomainModule } from './domain/domain.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,8 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     HttpModule,
     MetaModule.forRoot(),
+    DomainModule.forRoot(),
+    MetaRouterModule,
     AppRoutingModule
   ],
   providers: [],

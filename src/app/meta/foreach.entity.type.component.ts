@@ -1,5 +1,5 @@
-import { Component, ViewChild, ViewContainerRef, Type } from '@angular/core';
-import { ComponentFactory, ComponentFactoryResolver } from '@angular/core';
+import { Component, ViewContainerRef } from '@angular/core';
+import { ComponentFactoryResolver } from '@angular/core';
 
 import { AbstractPortComponent } from './abstract.port.component';
 import { MetadataService } from './metadata.service';
