@@ -10,10 +10,7 @@ import { MetadataService } from '../../meta/metadata.service';
 
 @Component({
   template: `
-    <h2>Details</h2>
-    <div *ngIf="entitytype">
-      <h3>Path: /{{ entitytype.name }}</h3>
-    </div>
+    <h1 *ngIf="entitytype">Listing {{ entitytype.description }}</h1>
     <button routerLink="/">Back</button>
   `,
   animations: [ slideInDownAnimation ]

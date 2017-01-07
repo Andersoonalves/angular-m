@@ -31,7 +31,7 @@ export class ProductService extends AbstractService<Product> {
     }
 
     describeEntityType(): EntityType {
-        let entitytype = new EntityType('Product', 'Products')
+        let entitytype = new EntityType('products', 'Products')
           .property('id', 'number')
           .property('name', 'string');
         return entitytype;

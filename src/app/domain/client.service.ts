@@ -28,7 +28,7 @@ export class ClientService extends AbstractService<Client> {
     }
 
     describeEntityType(): EntityType {
-        let entitytype = new EntityType('Client', 'Clients')
+        let entitytype = new EntityType('clients', 'Clients')
           .property('id', 'number')
           .property('name', 'string');
         return entitytype;

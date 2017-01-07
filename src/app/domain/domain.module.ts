@@ -4,6 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 // detail stuff
 import { ClientService } from './client.service';
 import { ProductService } from './product.service';
+import { AlunoService } from './aluno.service';
 
 @NgModule({
   imports: [],
@@ -18,7 +19,8 @@ export class DomainModule {
             ngModule: DomainModule,
             providers: [ // singletons accross the whole app
               ClientService,
-              ProductService
+              ProductService,
+              AlunoService
             ],
         };
     }

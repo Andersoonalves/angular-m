@@ -5,6 +5,7 @@ import { EntityTypeRouterComponent } from './widgets/router/entitytype.router';
 
 import { ProductService } from './domain/product.service';
 import { ClientService } from './domain/client.service';
+import { AlunoService } from './domain/aluno.service';
 
 @Component({
   selector: 'mg-root',
@@ -19,11 +20,13 @@ export class AppComponent {
   constructor(
       private metadata: MetadataService,
       private productService: ProductService,
-      private clientService: ClientService
+      private clientService: ClientService,
+      private alunoService: AlunoService
   ) {
 
     this.metadata.addService(productService);
     this.metadata.addService(clientService);
+    this.metadata.addService(alunoService);
 
     this.defineRules();
   }
