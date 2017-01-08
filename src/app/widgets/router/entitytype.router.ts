@@ -7,6 +7,5 @@ import { EntityType } from '../../meta/entity.type';
     template: '<a routerLink="/{{entitytype.name}}" routerLinkActive="active">{{entitytype.description}}</a> ',
 })
 export class EntityTypeRouterComponent {
-
-    @Input()  public entitytype: EntityType;
+    public entitytype: EntityType;
 };

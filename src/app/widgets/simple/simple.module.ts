@@ -1,11 +1,11 @@
-import { forwardRef }   from '@angular/core';
+import { forwardRef } from '@angular/core';
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { PlainTextComponent } from './plain';
-import { BoldTextComponent }   from './bold';
+import { BoldTextComponent } from './bold';
 
 export const SIMPLE_WIDGETS_DIRECTIVES = [
   forwardRef(() => PlainTextComponent),
@@ -14,23 +14,16 @@ export const SIMPLE_WIDGETS_DIRECTIVES = [
 
 @NgModule({
   imports: [
-      CommonModule,
-      FormsModule
+    CommonModule,
+    FormsModule
   ],
   declarations: [
-      SIMPLE_WIDGETS_DIRECTIVES
+    SIMPLE_WIDGETS_DIRECTIVES
   ],
   exports: [
-      SIMPLE_WIDGETS_DIRECTIVES,
-      CommonModule,
-      FormsModule
+    SIMPLE_WIDGETS_DIRECTIVES,
+    CommonModule,
+    FormsModule
   ]
 })
-export class SimpleModule {
-  static forRoot() {
-    return {
-      ngModule: SimpleModule,
-      providers: [ ]
-    };
-  }
-}
+export class SimpleModule { }

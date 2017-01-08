@@ -6,7 +6,7 @@ import { slideInDownAnimation } from '../../animations';
 
 import { EntityType } from '../../meta/entity.type';
 import { EntityTypeComponent } from '../../meta/entitytype.component';
-import { MetadataService } from '../../meta/metadata.service';
+import { DomainService } from '../../domain/domain.service';
 
 @Component({
   template: `
@@ -26,7 +26,7 @@ export class EntityTypeDetailsComponent extends EntityTypeComponent implements O
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: MetadataService
+    private domain: DomainService
   ) {
     super();
   }
@@ -35,7 +35,7 @@ export class EntityTypeDetailsComponent extends EntityTypeComponent implements O
     this.route.params
       .switchMap(
         (params: Params) =>
-          this.service.findEntityType(params['entitytypename']))
+          this.domain.findEntityType(params['entitytypename']))
       .subscribe(
         (entity: any) => {
           this.entitytype = entity;

@@ -18,8 +18,8 @@ import { DomainModule } from './domain/domain.module';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MetaModule.forRoot(),
-    DomainModule.forRoot(),
+    MetaModule,
+    DomainModule,
     MetaRouterModule,
     AppRoutingModule
   ],

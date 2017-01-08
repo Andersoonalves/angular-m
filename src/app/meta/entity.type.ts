@@ -17,3 +17,7 @@ export class EntityType {
 export class PropertyType {
     constructor(public entityType: EntityType, public name: string, public type: string) {}
 }
+
+export class Entity {
+      constructor(public id: number) { }
+}

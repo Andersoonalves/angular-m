@@ -1,5 +1,3 @@
-import { Injectable } from '@angular/core';
-
 import { AbstractService } from '../meta/abstract.service';
 import { EntityType } from '../meta/entity.type';
 
@@ -15,7 +13,6 @@ let CLIENTS = [
 
 let clientsPromise = Promise.resolve(CLIENTS);
 
-@Injectable() // TODO try moving this decorator to superclass
 export class ClientService extends AbstractService<Client> {
 
     listAll() {
