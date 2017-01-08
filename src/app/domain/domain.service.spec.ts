@@ -4,9 +4,7 @@ import { ProductService} from './product.service';
 import { ClientService} from './client.service';
 import { AlunoService} from './aluno.service';
 import { EntityType } from '../meta/entity.type';
-import { MetadataService } from '../meta/metadata.service';
-import { PlainTextComponent } from '../widgets/simple/plain';
-import { BoldTextComponent } from '../widgets/simple/bold';
+import { RuleService } from '../widgets/rule.service';
 
 describe( 'Service: MetadataService', () => {
 
@@ -14,7 +12,7 @@ describe( 'Service: MetadataService', () => {
     let service: DomainService;
 
     beforeEach( () => {
-        service = new DomainService(new MetadataService(), new ProductService(), new ClientService(), new AlunoService());
+        service = new DomainService(new ProductService(), new ClientService(), new AlunoService());
         helper = new DomainServiceHelper(service);
     });
 

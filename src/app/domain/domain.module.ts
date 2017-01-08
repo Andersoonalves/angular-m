@@ -1,13 +1,6 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 
-import { DomainService } from './domain.service';
-import { ClientService } from './client.service';
-import { ProductService } from './product.service';
-import { AlunoService } from './aluno.service';
-
-// TODO move to a GUI Module
-import { EntityTypeRouterComponent } from '../widgets/router/entitytype.router';
+import { DomainService, DOMAIN_SERVICES } from './domain.service';
 
 @NgModule({
   imports: [],
@@ -16,9 +9,7 @@ import { EntityTypeRouterComponent } from '../widgets/router/entitytype.router';
   entryComponents: [],
   providers: [
     DomainService,
-    ClientService,
-    ProductService,
-    AlunoService
+    DOMAIN_SERVICES
   ]
 })
-export class DomainModule {}
+export class DomainModule { }

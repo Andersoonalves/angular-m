@@ -1,12 +1,12 @@
 import { Injectable, Type } from '@angular/core';
 
-import { EntityType } from '../meta/entity.type';
-import { Rule } from './rule';
+// TODO move to a GUI Module
+import { EntityTypeRouterComponent } from '../widgets/router/entitytype.router';
 
 @Injectable()
-export class MetadataService {
+export class RuleService {
 
-  private rules: Rule [] = [];
+  private rules: Rule[] = [];
 
   // Use Rule creation static methods
   addRule(port: string, entitySelector: string, component: Type<any>) {
@@ -14,8 +14,8 @@ export class MetadataService {
     this.rules.push(rule);
   }
 
-  getWidget(entitytype: EntityType, port: string): Type<any> {
-    return this.findEntityTypeTemplate(entitytype.name, port);
+  getWidget(entitytypename: string, port: string): Type<any> {
+    return this.findEntityTypeTemplate(entitytypename, port);
   }
 
   findEntityTypeTemplate(entityType: string, port: string): Type<any> {
@@ -41,4 +41,19 @@ export class MetadataService {
       : false;
   }
 
+}
+
+class Rule {
+
+  static readonly DEFAULT_ENTITY_SCOPE: string = '*';
+
+  static defaultEntityDirective(port: string, component: Type<any>): Rule {
+    return new Rule(port, Rule.DEFAULT_ENTITY_SCOPE, component);
+  }
+
+  constructor(public port: string, public entitySelector: string, public component: Type<any>) { };
+
+  hasDefaultScope(): boolean {
+    return Rule.DEFAULT_ENTITY_SCOPE === this.entitySelector;
+  }
 }

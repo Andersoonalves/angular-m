@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { MetaModule } from './meta/meta.module';
+import { WidgetModule } from './widgets/widget.module';
 import { AppRoutingModule } from './app-routing.module';
 import { MetaRouterModule } from './widgets/router/metarouter.module';
 import { DomainModule } from './domain/domain.module';
@@ -19,6 +20,7 @@ import { DomainModule } from './domain/domain.module';
     FormsModule,
     HttpModule,
     MetaModule,
+    WidgetModule,
     DomainModule,
     MetaRouterModule,
     AppRoutingModule

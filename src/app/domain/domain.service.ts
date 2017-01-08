@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
+import { forwardRef } from '@angular/core';
 
-import { MetadataService } from '../meta/metadata.service';
 import { EntityType } from '../meta/entity.type';
 import { AbstractService } from '../meta/abstract.service';
 
@@ -8,8 +8,11 @@ import { ClientService } from './client.service';
 import { ProductService } from './product.service';
 import { AlunoService } from './aluno.service';
 
-// TODO move to a GUI Module
-import { EntityTypeRouterComponent } from '../widgets/router/entitytype.router';
+export const DOMAIN_SERVICES = [
+  forwardRef(() => ClientService),
+  forwardRef(() => ProductService),
+  forwardRef(() => AlunoService)
+];
 
 @Injectable()
 export class DomainService {
@@ -18,7 +21,6 @@ export class DomainService {
     private services: { [entitytype: string]: AbstractService<any>; } = {};
 
     constructor(
-        private metadata: MetadataService,
         private productService: ProductService,
         private clientService: ClientService,
         private alunoService: AlunoService
@@ -26,9 +28,6 @@ export class DomainService {
         this.addService(productService);
         this.addService(clientService);
         this.addService(alunoService);
-
-        this.metadata.addRule('entitytypes_menu', '*', EntityTypeRouterComponent);
-
     }
 
     findEntityType(name: string): Promise<EntityType> {
@@ -47,6 +46,10 @@ export class DomainService {
         let entityType = service.describeEntityType();
         this.addEntityType(entityType);
         this.services[entityType.name] = service;
+    }
+
+    listServices(): AbstractService<any>[] {
+        return Object.keys(this.services).map(key => this.services[key]);
     }
 
     addEntityType(entityType: EntityType) {
