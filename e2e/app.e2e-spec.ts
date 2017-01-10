@@ -9,6 +9,6 @@ describe('angular-m App', function() {
 
   it('should display message saying app works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Example Application');
+    expect(page.getParagraphText()).toEqual('Welcome');
   });
 });
