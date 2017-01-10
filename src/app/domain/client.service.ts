@@ -1,33 +1,25 @@
-import { AbstractService } from '../meta/abstract.service';
-import { EntityType } from '../meta/entity.type';
+import { InMemoryService } from '../meta/inmemory.service';
+import { EntityType, Entity } from '../meta/entity.type';
 
-export class Client {
-  constructor(public id: number, public name: string) { }
+export class Client extends Entity {
+    constructor(public id: number, public name: string) {
+        super(id);
+    }
 }
 
-let CLIENTS = [
-  new Client(1, 'John'),
-  new Client(2, 'Mary'),
-  new Client(3, 'Bill'),
-];
+export class ClientService extends InMemoryService<Client> {
 
-let clientsPromise = Promise.resolve(CLIENTS);
-
-export class ClientService extends AbstractService<Client> {
-
-    listAll() {
-        return clientsPromise;
-    }
-
-    findUnique(id: number | string) {
-        return clientsPromise
-            .then(clients => clients.find(client => client.id === +id));
+    constructor() {
+        super();
+        this.data.push(new Client(1, 'John'));
+        this.data.push(new Client(2, 'Mary'));
+        this.data.push(new Client(3, 'Bill'));
     }
 
     describeEntityType(): EntityType {
         let entitytype = new EntityType('clients', 'Clients')
-          .property('id', 'number')
-          .property('name', 'string');
+            .property('id', 'number')
+            .property('name', 'string');
         return entitytype;
     }
 }

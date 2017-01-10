@@ -6,7 +6,7 @@ import { AlunoService} from './aluno.service';
 import { EntityType } from '../meta/entity.type';
 import { RuleService } from '../widgets/rule.service';
 
-describe( 'Service: MetadataService', () => {
+describe( 'Service: DomainService', () => {
 
     let helper: DomainServiceHelper;
     let service: DomainService;
@@ -35,7 +35,3 @@ describe( 'Service: MetadataService', () => {
     });
 
 });
-
-
-
-

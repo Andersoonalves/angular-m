@@ -5,18 +5,13 @@ import { OnChanges, SimpleChange, ViewContainerRef } from '@angular/core';
 
 export class AbstractPortDirective implements AfterViewInit, OnChanges, OnDestroy, OnInit {
 
-  // this will be reference to dynamic content - to be able to destroy it
   protected componentRefs: Array<ComponentRef<any>> = [];
-
-  // until ngAfterViewInit, we cannot start (firstly) to process dynamic stuff
   protected wasViewInitialized = false;
-
 
   constructor(
     private componentTarget: ViewContainerRef,
     private compiler: ComponentFactoryResolver
   ) { }
-
 
   public refreshContent() {
     this.destroyCurrentComponentRefs();
@@ -35,8 +30,6 @@ export class AbstractPortDirective implements AfterViewInit, OnChanges, OnDestro
     this.componentRefs.push(componentRef);
     return componentRef;
   }
-
-
 
   public ngOnInit() { }
 

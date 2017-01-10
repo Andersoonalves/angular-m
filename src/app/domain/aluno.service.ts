@@ -1,4 +1,3 @@
-import { AbstractService } from '../meta/abstract.service';
 import { EntityType, Entity } from '../meta/entity.type';
 import { InMemoryService } from '../meta/inmemory.service';
 

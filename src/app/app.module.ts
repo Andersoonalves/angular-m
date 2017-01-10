@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { MetaModule } from './meta/meta.module';
+import { MetaModule, META_DIRECTIVES } from './meta/meta.module';
 import { WidgetModule } from './widgets/widget.module';
 import { AppRoutingModule } from './app-routing.module';
 import { MetaRouterModule } from './widgets/router/metarouter.module';
@@ -26,6 +26,7 @@ import { DomainModule } from './domain/domain.module';
     AppRoutingModule
   ],
   providers: [],
+  exports: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

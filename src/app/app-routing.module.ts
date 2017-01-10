@@ -2,9 +2,10 @@ import { NgModule }              from '@angular/core';
 import { RouterModule, Routes }  from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-import { EntityTypeDetailsComponent } from './widgets/router/entitytype.details.component';
+import { EntityTypeDetailsComponent } from './widgets/entitytype.details.component';
 import { HomeComponent } from './widgets/router/home.component';
 import { PageNotFoundComponent } from './not-found.component';
+import { WidgetModule } from './widgets/widget.module';
 
 
 const appRoutes: Routes = [
@@ -17,17 +18,16 @@ const appRoutes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    WidgetModule
   ],
   declarations: [
       HomeComponent,
-      EntityTypeDetailsComponent,
       PageNotFoundComponent
   ],
   exports: [
     RouterModule,
     HomeComponent,
-    EntityTypeDetailsComponent,
     PageNotFoundComponent
   ]
 })

@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { EntityTypeRouterComponent } from './entitytype.router';
+import { MetaModule } from '../../meta/meta.module';
 
 export const META_ROUTER_DIRECTIVES = [
   forwardRef(() => EntityTypeRouterComponent)
@@ -14,7 +15,8 @@ export const META_ROUTER_DIRECTIVES = [
   imports: [
       CommonModule,
       FormsModule,
-      RouterModule
+      RouterModule,
+      MetaModule
   ],
   declarations: [
       META_ROUTER_DIRECTIVES

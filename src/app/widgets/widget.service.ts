@@ -3,12 +3,14 @@ import { Injectable, Type } from '@angular/core';
 import { RuleService } from './rule.service';
 
 import { EntityTypeRouterComponent } from '../widgets/router/entitytype.router';
+import { ThComponent } from '../widgets/simple/th';
 
 @Injectable()
 export class WidgetService {
 
   constructor(ruleService: RuleService) {
-    ruleService.addRule('entitytypes_menu', '*', EntityTypeRouterComponent);
+    ruleService.addDefaultEntityTypeRule('entitytypes_menu', EntityTypeRouterComponent);
+    ruleService.addDefaultPropertyTypeRule('table_head', ThComponent);
   }
 
 }

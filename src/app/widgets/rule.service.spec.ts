@@ -1,5 +1,5 @@
 import { DomainService } from '../domain/domain.service';
-import { RuleService } from './rule.service';
+import { RuleService, EntityTypeRuleService, PropertyTypeRuleService } from './rule.service';
 import { EntityType } from '../meta/entity.type';
 import { PlainTextComponent } from './simple/plain';
 import { BoldTextComponent } from './simple/bold';
@@ -9,16 +9,20 @@ describe( 'Service: MetadataService', () => {
     let service: RuleService;
 
     beforeEach( () => {
-        service = new RuleService();
+        service = new RuleService(new EntityTypeRuleService(), new PropertyTypeRuleService());
     });
 
     it( 'Add rules', () => {
-        service.addRule('entitieslist', 'Product', BoldTextComponent);
-        service.addRule('entitieslist', '*', PlainTextComponent);
+        let productET = new EntityType('Product', 'Products');
+        let customerET = new EntityType('Customer', 'Customers');
 
-        expect(service.findEntityTypeTemplate('Product', 'entitieslist'))
+
+        service.addEntityTypeRule('entitieslist', productET.name, BoldTextComponent);
+        service.addDefaultEntityTypeRule('entitieslist', PlainTextComponent);
+
+        expect(service.getEntityTypeWidget(productET, 'entitieslist'))
             .toBe(BoldTextComponent);
-        expect(service.findEntityTypeTemplate('Customer', 'entitieslist'))
+        expect(service.getEntityTypeWidget(customerET, 'entitieslist'))
             .toBe(PlainTextComponent);
     });
 

@@ -1,0 +1,9 @@
+<h1 *ngIf="entitytype">Listing {{ entitytype.description }}</h1>
+
+<table *ngIf="entitytype">
+  <thead>
+    <div [mgForeachPropertyType]="'table_head'" [entitytype]="entitytype"></div>
+  </thead>
+</table>
+
+<button routerLink="">Back</button>

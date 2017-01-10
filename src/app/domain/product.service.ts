@@ -1,36 +1,28 @@
-import { AbstractService } from '../meta/abstract.service';
-import { EntityType } from '../meta/entity.type';
+import { InMemoryService } from '../meta/inmemory.service';
+import { EntityType, Entity } from '../meta/entity.type';
 
-export class Product {
-  constructor(public id: number, public name: string) { }
+export class Product extends Entity {
+    constructor(public id: number, public name: string) {
+        super(id);
+    }
 }
 
-let PRODUCTS = [
-  new Product(1, 'Banana'),
-  new Product(2, 'iPhone'),
-  new Product(3, 'Fiat Toro'),
-  new Product(4, 'A380'),
-  new Product(5, 'Netflix subscription'),
-  new Product(6, 'AWS EC2 small instance')
-];
+export class ProductService extends InMemoryService<Product> {
 
-let productsPromise = Promise.resolve(PRODUCTS);
-
-export class ProductService extends AbstractService<Product> {
-
-    listAll() {
-        return productsPromise;
-    }
-
-    findUnique(id: number | string) {
-        return productsPromise
-            .then(products => products.find(product => product.id === +id));
+    constructor() {
+        super();
+        this.data.push(new Product(1, 'Banana'));
+        this.data.push(new Product(2, 'iPhone'));
+        this.data.push(new Product(3, 'Fiat Toro'));
+        this.data.push(new Product(4, 'A380'));
+        this.data.push(new Product(5, 'Netflix subscription'));
+        this.data.push(new Product(6, 'AWS EC2 small instance'));
     }
 
     describeEntityType(): EntityType {
         let entitytype = new EntityType('products', 'Products')
-          .property('id', 'number')
-          .property('name', 'string');
+            .property('id', 'number')
+            .property('name', 'string');
         return entitytype;
     }
 }
