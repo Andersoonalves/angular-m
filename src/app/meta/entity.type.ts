@@ -2,7 +2,7 @@ export class EntityType {
 
     propertyTypes: PropertyType [] = [];
 
-    constructor(public name: string, public description: string) {}
+    constructor(public singular: string, public plural: string) {}
 
     property(name: string, type: string): EntityType {
         this.propertyTypes.push(new PropertyType(this, name, type));

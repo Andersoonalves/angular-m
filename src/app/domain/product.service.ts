@@ -20,7 +20,7 @@ export class ProductService extends InMemoryService<Product> {
     }
 
     describeEntityType(): EntityType {
-        let entitytype = new EntityType('products', 'Products')
+        let entitytype = new EntityType('product', 'products', 'Products')
             .property('id', 'number')
             .property('name', 'string');
         return entitytype;

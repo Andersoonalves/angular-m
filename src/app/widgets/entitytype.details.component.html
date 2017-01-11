@@ -1,9 +1,11 @@
-<h1 *ngIf="entitytype">Listing {{ entitytype.description }}</h1>
+<div *ngIf="entitytype">
+  <h1>Listing {{ entitytype.plural | titleCase }}</h1>
+  <table>
+    <thead>
+      <div [mgForeachPropertyType]="'table_head'" [entitytype]="entitytype"></div>
+    </thead>
+  </table>
 
-<table *ngIf="entitytype">
-  <thead>
-    <div [mgForeachPropertyType]="'table_head'" [entitytype]="entitytype"></div>
-  </thead>
-</table>
-
-<button routerLink="">Back</button>
+  <a routerLink="/{{entitytype.plural}}/new">New {{entitytype.singular | titleCase}}</a>
+  <a routerLink="/">Back</a>
+</div>

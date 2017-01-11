@@ -11,6 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { MetaRouterModule } from './widgets/router/metarouter.module';
 import { DomainModule } from './domain/domain.module';
 
+import { PipesModule } from './pipes/pipes.module';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -23,10 +25,11 @@ import { DomainModule } from './domain/domain.module';
     WidgetModule,
     DomainModule,
     MetaRouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PipesModule
   ],
   providers: [],
-  exports: [],
+  exports: [PipesModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

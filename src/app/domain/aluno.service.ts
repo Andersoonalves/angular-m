@@ -17,10 +17,10 @@ export class AlunoService extends InMemoryService<Aluno> {
     }
 
     describeEntityType(): EntityType {
-        let entitytype = new EntityType('alunos', 'Alunos')
-          .property('id', 'number')
-          .property('nome', 'string')
-          .property('matricula', 'number');
+        let entitytype = new EntityType('aluno', 'alunos', 'Alunos')
+//          .property('id', 'number')
+          .property('Nome', 'string')
+          .property('Matricula', 'number');
         return entitytype;
     }
 }

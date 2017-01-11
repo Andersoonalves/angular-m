@@ -18,7 +18,7 @@ export const DOMAIN_SERVICES = [
 export class DomainService {
 
     private entityTypes: { [name: string]: EntityType; } = {};
-    private services: { [entitytype: string]: AbstractService<any>; } = {};
+    private services: { [entityTypeName: string]: AbstractService<any>; } = {};
 
     constructor(
         private productService: ProductService,
@@ -45,7 +45,7 @@ export class DomainService {
     addService(service: AbstractService<any>) {
         let entityType = service.describeEntityType();
         this.addEntityType(entityType);
-        this.services[entityType.name] = service;
+        this.services[entityType.singular] = service;
     }
 
     listServices(): AbstractService<any>[] {
@@ -53,7 +53,7 @@ export class DomainService {
     }
 
     addEntityType(entityType: EntityType) {
-        this.entityTypes[entityType.name] = entityType;
+        this.entityTypes[entityType.plural] = entityType;
     }
 
     getService(entitytype: string): AbstractService<any> {

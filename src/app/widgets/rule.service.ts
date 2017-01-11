@@ -77,7 +77,7 @@ export class EntityTypeRuleService extends AbstractRuleService<EntityTypeRule> {
       if (rule.port === port) {
         if (rule.hasDefaultScope()) {
           defaultScope = rule;
-        } else if (this.matchExpression(entityType.name, rule.entitySelector)) {
+        } else if (this.matchExpression(entityType.singular, rule.entitySelector)) {
           matchName = rule;
         }
       }
@@ -118,14 +118,14 @@ export class PropertyTypeRuleService extends AbstractRuleService<PropertyTypeRul
     this.rules.forEach(rule => {
       if (rule.port === port) {
         if (rule.propertyTypeTypeSelector) {
-          if (this.matchExpression(propertyType.entityType.name, rule.entitySelector)
+          if (this.matchExpression(propertyType.entityType.singular, rule.entitySelector)
               && this.matchExpression(propertyType.name, rule.propertySelector)
               && propertyType.type === rule.propertyTypeTypeSelector) {
             matchType = rule;
           }
         } else if (rule.hasDefaultScope()) {
           defaultScope = rule;
-        } else if (this.matchExpression(propertyType.entityType.name, rule.entitySelector)
+        } else if (this.matchExpression(propertyType.entityType.singular, rule.entitySelector)
               && this.matchExpression(propertyType.name, rule.propertySelector)) {
           matchScope = rule;
         }

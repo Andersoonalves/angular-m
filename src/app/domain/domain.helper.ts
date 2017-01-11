@@ -14,7 +14,7 @@ export class DomainServiceHelper {
         expect(entityTypes.length).toBe(length);
 
         entityTypeNames.forEach( (entityTypeName, index) => {
-            expect(entityTypes[index].name).toBe(entityTypeName);
+            expect(entityTypes[index].singular).toBe(entityTypeName);
         });
     }
 }

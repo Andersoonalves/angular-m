@@ -7,11 +7,13 @@ import { FormsModule } from '@angular/forms';
 import { PlainTextComponent } from './plain';
 import { BoldTextComponent } from './bold';
 import { ThComponent } from './th';
+import { FormLineComponent } from './form.line';
 
 export const SIMPLE_WIDGETS_DIRECTIVES = [
   forwardRef(() => PlainTextComponent),
   forwardRef(() => BoldTextComponent),
-  forwardRef(() => ThComponent)
+  forwardRef(() => ThComponent),
+  forwardRef(() => FormLineComponent)
 ];
 
 @NgModule({
