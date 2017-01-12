@@ -17,7 +17,7 @@ export class AlunoService extends InMemoryService<Aluno> {
     }
 
     describeEntityType(): EntityType {
-        let entitytype = new EntityType('aluno', 'alunos', 'Alunos')
+        let entitytype = new EntityType('aluno', 'alunos')
 //          .property('id', 'number')
           .property('Nome', 'string')
           .property('Matricula', 'number');

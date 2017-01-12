@@ -17,7 +17,7 @@ export class ClientService extends InMemoryService<Client> {
     }
 
     describeEntityType(): EntityType {
-        let entitytype = new EntityType('client', 'clients', 'Clients')
+        let entitytype = new EntityType('client', 'clients')
             .property('id', 'number')
             .property('name', 'string');
         return entitytype;
