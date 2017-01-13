@@ -9,6 +9,8 @@ import { BoldTextComponent } from './bold';
 import { ThComponent } from './th';
 import { FormLineComponent } from './form.line';
 
+import { PipesModule } from '../../pipes/pipes.module';
+
 export const SIMPLE_WIDGETS_DIRECTIVES = [
   forwardRef(() => PlainTextComponent),
   forwardRef(() => BoldTextComponent),
@@ -19,7 +21,8 @@ export const SIMPLE_WIDGETS_DIRECTIVES = [
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    PipesModule
   ],
   declarations: [
     SIMPLE_WIDGETS_DIRECTIVES
