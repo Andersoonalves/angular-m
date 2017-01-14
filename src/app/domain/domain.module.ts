@@ -1,25 +1,15 @@
-import { NgModule }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-// detail stuff
-import { ClientService } from './client.service';
-import { ProductService } from './product.service';
+import { DomainService, DOMAIN_SERVICES } from './domain.service';
 
 @NgModule({
   imports: [],
   declarations: [],
   exports: [],
-  entryComponents: []
+  entryComponents: [],
+  providers: [
+    DomainService,
+    DOMAIN_SERVICES
+  ]
 })
-export class DomainModule {
-
-    static forRoot() {
-        return {
-            ngModule: DomainModule,
-            providers: [ // singletons accross the whole app
-              ClientService,
-              ProductService
-            ],
-        };
-    }
-}
+export class DomainModule { }

@@ -1,0 +1,16 @@
+<div *ngIf="entitytype">
+  <h1>New {{ entitytype.singular | titleCase }}</h1>
+
+  <form [formGroup]="myForm"  
+          (ngSubmit)="onSubmit(myForm.value)">
+
+    <div 
+      [mgForeachPropertyType]="'form_line'" 
+      [entitytype]="entitytype" 
+      [mgForm]="myForm"></div>
+
+    <input type="submit" value="Create {{ entitytype.singular | titleCase }}">
+  </form> 
+
+  <a routerLink="/{{entitytype.plural}}">Back</a>
+</div>

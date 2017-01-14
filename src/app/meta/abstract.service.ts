@@ -1,10 +1,15 @@
+import { Injectable } from '@angular/core';
+
 import { EntityType } from './entity.type';
 
-export abstract class AbstractService<T> {
+@Injectable()
+export abstract class AbstractService {
 
-    abstract listAll(): Promise<T[]>;
-    abstract findUnique(id: number | string): Promise<T>;
+    abstract listAll(): Promise<any[]>;
+    abstract findUnique(id: number | string): Promise<any>;
 
     abstract describeEntityType(): EntityType;
+
+    abstract create(object: any);
 
 }

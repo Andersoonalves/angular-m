@@ -2,25 +2,17 @@ import 'rxjs/add/operator/switchMap';
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
-import { slideInDownAnimation } from '../../animations';
+import { slideInDownAnimation } from '../animations';
 
-import { EntityType } from '../../meta/entity.type';
-import { EntityTypeComponent } from '../../meta/entitytype.component';
-import { MetadataService } from '../../meta/metadata.service';
+import { EntityType } from '../meta/entity.type';
+import { EntityTypeComponent } from '../meta/entitytype.component';
+import { DomainService } from '../domain/domain.service';
 
 @Component({
-  template: `
-    <h2>Details</h2>
-    <div *ngIf="entitytype">
-      <h3>Path: /{{ entitytype.name }}</h3>
-    </div>
-    <button routerLink="/">Back</button>
-  `,
+  templateUrl: './entitytype.details.component.html',
   animations: [ slideInDownAnimation ]
 })
 export class EntityTypeDetailsComponent extends EntityTypeComponent implements OnInit {
-
-  public entitytype: EntityType;
 
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display')   display = 'block';
@@ -29,7 +21,7 @@ export class EntityTypeDetailsComponent extends EntityTypeComponent implements O
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private service: MetadataService
+    private domain: DomainService
   ) {
     super();
   }
@@ -38,7 +30,7 @@ export class EntityTypeDetailsComponent extends EntityTypeComponent implements O
     this.route.params
       .switchMap(
         (params: Params) =>
-          this.service.findEntityType(params['entitytypename']))
+          this.domain.findEntityType(params['entitytypename']))
       .subscribe(
         (entity: any) => {
           this.entitytype = entity;

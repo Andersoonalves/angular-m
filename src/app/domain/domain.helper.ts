@@ -1,8 +1,8 @@
-import { MetadataService } from './metadata.service';
+import { DomainService } from './domain.service';
 
-export class MetadataServiceHelper {
+export class DomainServiceHelper {
 
-    constructor(private service: MetadataService) {}
+    constructor(private service: DomainService) {}
 
     checkService() {
         expect(this.service).toBeTruthy();
@@ -14,7 +14,7 @@ export class MetadataServiceHelper {
         expect(entityTypes.length).toBe(length);
 
         entityTypeNames.forEach( (entityTypeName, index) => {
-            expect(entityTypes[index].name).toBe(entityTypeName);
+            expect(entityTypes[index].singular).toBe(entityTypeName);
         });
     }
 }
