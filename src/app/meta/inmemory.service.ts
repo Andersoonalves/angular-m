@@ -12,7 +12,7 @@ export abstract class InMemoryService extends AbstractService {
 
     findUnique(id: number | string) {
         return this.listAll()
-            .then(items => items.find(item => item.id === +id));
+            .then(items => items.find(item => item.id === +id));  //TO DO generalize key param
     }
 
     create(entity: any) {

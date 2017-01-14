@@ -3,6 +3,7 @@ import { RouterModule, Routes }  from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 import { EntityTypeDetailsComponent } from './widgets/entitytype.details.component';
+import { EntityShowComponent } from './widgets/entity.show.component';
 import { CreateEntityTypeComponent } from './widgets/create.entitytype.component';
 import { HomeComponent } from './widgets/router/home.component';
 import { PageNotFoundComponent } from './not-found.component';
@@ -13,6 +14,7 @@ const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: ':entitytypename', component: EntityTypeDetailsComponent },
   { path: ':entitytypename/new', component: CreateEntityTypeComponent },
+  { path: ':entitytypename/:key', component: EntityShowComponent },
   { path: '**', component: PageNotFoundComponent }  
 ];
 

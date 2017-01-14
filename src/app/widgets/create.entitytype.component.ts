@@ -40,15 +40,14 @@ export class CreateEntityTypeComponent extends EntityTypeComponent implements On
     this.myForm = this.fb.group(fbConf);  
   }
 
+  mapEntityTypeParam(params: Params): Promise<EntityType> {
+    return this.domain.findEntityType(params['entitytypename']);
+  }
+
   ngOnInit() {
     this.route.params
-      .switchMap(
-        (params: Params) =>
-          this.domain.findEntityType(params['entitytypename']))
-      .subscribe(
-        (entityType: any) => {
-          this.configureForm(entityType);
-        });
+      .switchMap((params: Params) => this.mapEntityTypeParam(params))
+      .subscribe((entityType: EntityType) => this.configureForm(entityType));
   }
 
   onSubmit(form: any): void { 
