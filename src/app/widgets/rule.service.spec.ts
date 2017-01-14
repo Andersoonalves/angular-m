@@ -13,16 +13,16 @@ describe( 'Service: MetadataService', () => {
     });
 
     it( 'Add rules', () => {
-        let productET = new EntityType('product', 'products', 'Products');
-        let customerET = new EntityType('customer', 'customers', 'Customers');
+        let productET = new EntityType('product', 'products');
+        let customerET = new EntityType('customer', 'customers');
 
 
         service.addEntityTypeRule('entitieslist', productET.singular, BoldTextComponent);
         service.addDefaultEntityTypeRule('entitieslist', PlainTextComponent);
 
-        expect(service.getEntityTypeWidget(productET, 'entitieslist'))
+        expect(service.getEntityTypeWidget(productET, 'entitieslist').widget)
             .toBe(BoldTextComponent);
-        expect(service.getEntityTypeWidget(customerET, 'entitieslist'))
+        expect(service.getEntityTypeWidget(customerET, 'entitieslist').widget)
             .toBe(PlainTextComponent);
     });
 

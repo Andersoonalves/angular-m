@@ -32,9 +32,10 @@ export class ForeachPropertyTypeDirective extends AbstractPortDirective implemen
     super.refreshContent();
 
     this.entitytype.propertyTypes.forEach((propertytype) => {
-      let componentType = this.rule.getPropertyTypeWidget(propertytype, this.port);
-      let componentRef = this.createComponent(componentType);
+      let widgetConnection = this.rule.getPropertyTypeWidget(propertytype, this.port);
+      let componentRef = this.createComponent(widgetConnection.widget);
       componentRef.instance.propertytype = propertytype;
+      componentRef.instance.configuration = (widgetConnection.configuration) ? widgetConnection.configuration : {};
       if (this.mgForm) {
         componentRef.instance.mgFormControl = this.mgForm.controls[propertytype.name];
       }

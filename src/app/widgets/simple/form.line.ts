@@ -8,7 +8,7 @@ import { PropertyTypeComponent } from '../../meta/propertytype.component';
     template: 
         `<label for="{{propertytype.entityType.singular}}_{{propertytype.name}}">{{propertytype.name | titleCase}}</label>
         <input 
-            type="text"
+            type="{{configuration.inputType}}"
             id="{{propertytype.entityType.singular}}_{{propertytype.name}}" 
             placeholder="{{propertytype.name | titleCase}}"
             [formControl]="mgFormControl"

@@ -31,7 +31,7 @@ describe( 'Service: DomainService', () => {
             .property('birthdate', 'date'));
 
         helper.checkService();
-        helper.checkEntityTypes(5, 'products', 'clients', 'alunos', 'Car', 'Customer');
+        helper.checkEntityTypes(5, 'products', 'clients', 'alunos', 'cars', 'Customers');
     });
 
 });

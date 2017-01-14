@@ -12,7 +12,8 @@ export class WidgetService {
   constructor(ruleService: RuleService) {
     ruleService.addDefaultEntityTypeRule('entitytypes_menu', EntityTypeRouterComponent);
     ruleService.addDefaultPropertyTypeRule('table_head', ThComponent);
-    ruleService.addDefaultPropertyTypeRule('form_line', FormLineComponent);
+    ruleService.addPropertyTypeRule('form_line', "*", 'matricula', null, FormLineComponent, { inputType: "number"});
+    ruleService.addDefaultPropertyTypeRule('form_line', FormLineComponent, { inputType: "text"});
   }
 
 }
