@@ -29,9 +29,10 @@ export class ForeachEntityTypeDirective extends AbstractPortDirective {
     super.refreshContent();
 
     this.domain.listEntityTypes().forEach((entityType) => {
-      let componentType = this.rule.getEntityTypeWidget(entityType, this.port);
-      let componentRef = this.createComponent(componentType);
+      let widgetConnection = this.rule.getEntityTypeWidget(entityType, this.port);
+      let componentRef = this.createComponent(widgetConnection.widget);
       componentRef.instance.entitytype = entityType;
+      componentRef.instance.configuration = (widgetConnection.configuration) ? widgetConnection.configuration : {};
     });
   }
 
