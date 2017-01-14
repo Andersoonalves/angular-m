@@ -30,6 +30,8 @@ export class EntityShowComponent extends EntityComponent implements OnInit {
     return new Promise((resolve, reject) => {
       this.domain.findEntityType(params['entitytypename']).then(
         (entityType: EntityType) => {
+          console.log(entityType);
+          console.log(params['key']);
           let entityPromisse = this.domain.getService(entityType.singular).findUnique(params['key']);
           resolve(entityPromisse);
         }

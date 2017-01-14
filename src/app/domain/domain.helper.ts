@@ -1,4 +1,5 @@
 import { DomainService } from './domain.service';
+import { EntityType } from '../meta/entity.type';
 
 export class DomainServiceHelper {
 
@@ -17,4 +18,14 @@ export class DomainServiceHelper {
             expect(entityTypes[index].plural).toBe(entityTypeName);
         });
     }
+
+    checkEntityType(entityTypeName: string, tags: any) {
+        this.service.findEntityType(entityTypeName).then(
+            (entityType: EntityType) => {
+                expect(entityType).toBeTruthy();
+                expect(entityType.tags).toBe(tags);
+            }
+        );
+    }
+
 }

@@ -1,6 +1,6 @@
 import { fdatasync } from 'fs';
 import { AbstractService } from './abstract.service';
-import { EntityType, Entity } from './entity.type';
+import { EntityType, Entity, PropertyType } from './entity.type';
 
 export abstract class InMemoryService extends AbstractService {
 
@@ -11,12 +11,15 @@ export abstract class InMemoryService extends AbstractService {
     }
 
     findUnique(id: number | string) {
+        let entityType: EntityType = this.describeEntityType();
+        let idPropertyType: string = entityType.tags.id;
         return this.listAll()
-            .then(items => items.find(item => item.id === +id));  //TO DO generalize key param
+            .then(items => items.find(item => item[idPropertyType] === id));
     }
 
     create(entity: any) {
         this.data.push(entity);
+        console.log(entity);
     }
 
 }

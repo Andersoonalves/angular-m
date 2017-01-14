@@ -7,14 +7,15 @@ import { BoldTextComponent } from './simple/bold';
 describe( 'Service: MetadataService', () => {
 
     let service: RuleService;
+    let fakeTags = { id: "id" };
 
     beforeEach( () => {
         service = new RuleService(new EntityTypeRuleService(), new PropertyTypeRuleService());
     });
 
     it( 'Add rules', () => {
-        let productET = new EntityType('product', 'products');
-        let customerET = new EntityType('customer', 'customers');
+        let productET = new EntityType('product', 'products', fakeTags);
+        let customerET = new EntityType('customer', 'customers', fakeTags);
 
 
         service.addEntityTypeRule('entitieslist', productET.singular, BoldTextComponent);
@@ -27,9 +28,9 @@ describe( 'Service: MetadataService', () => {
     });
 
     it( 'With configuration', () => {
-        let productET = new EntityType('product', 'products');
-        let branchET = new EntityType('branch', 'branches');
-        let customerET = new EntityType('customer', 'customers');
+        let productET = new EntityType('product', 'products', fakeTags);
+        let branchET = new EntityType('branch', 'branches', fakeTags);
+        let customerET = new EntityType('customer', 'customers', fakeTags);
 
 
         service.addEntityTypeRule('entitieslist', productET.singular, BoldTextComponent, {conf1: "abc"});
