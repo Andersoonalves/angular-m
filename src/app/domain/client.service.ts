@@ -7,7 +7,7 @@ export class Client extends Entity {
     }
 }
 
-export class ClientService extends InMemoryService<Client> {
+export class ClientService extends InMemoryService {
 
     constructor() {
         super();

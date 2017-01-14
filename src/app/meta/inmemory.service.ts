@@ -1,9 +1,10 @@
+import { fdatasync } from 'fs';
 import { AbstractService } from './abstract.service';
 import { EntityType, Entity } from './entity.type';
 
-export abstract class InMemoryService<T extends Entity> extends AbstractService<T> {
+export abstract class InMemoryService extends AbstractService {
 
-    protected data: T[] = [];
+    protected data: any[] = [];
 
     listAll() {
         return Promise.resolve(this.data);
@@ -12,6 +13,10 @@ export abstract class InMemoryService<T extends Entity> extends AbstractService<
     findUnique(id: number | string) {
         return this.listAll()
             .then(items => items.find(item => item.id === +id));
+    }
+
+    create(entity: any) {
+        this.data.push(entity);
     }
 
 }

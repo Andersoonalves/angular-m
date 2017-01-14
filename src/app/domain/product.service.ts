@@ -7,7 +7,7 @@ export class Product extends Entity {
     }
 }
 
-export class ProductService extends InMemoryService<Product> {
+export class ProductService extends InMemoryService {
 
     constructor() {
         super();

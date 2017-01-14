@@ -1,11 +1,7 @@
 import 'rxjs/add/operator/switchMap';
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-
-import {  
-  FormBuilder,  
-  FormGroup  
-} from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 import { slideInDownAnimation } from '../animations';
 
@@ -55,7 +51,8 @@ export class CreateEntityTypeComponent extends EntityTypeComponent implements On
         });
   }
 
-  onSubmit(form: any): void {  
+  onSubmit(form: any): void { 
+    this.domain.getService(this.entitytype.singular).create(form); 
     console.log('you submitted value:', form);  
   }
 }

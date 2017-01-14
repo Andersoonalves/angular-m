@@ -7,7 +7,7 @@ export class Aluno extends Entity {
   }
 }
 
-export class AlunoService extends InMemoryService<Aluno> {
+export class AlunoService extends InMemoryService {
 
     constructor() {
         super();
@@ -18,7 +18,6 @@ export class AlunoService extends InMemoryService<Aluno> {
 
     describeEntityType(): EntityType {
         let entitytype = new EntityType('aluno', 'alunos')
-//          .property('id', 'number')
           .property('nome', 'string')
           .property('matricula', 'number');
         return entitytype;

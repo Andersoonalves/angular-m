@@ -6,9 +6,7 @@ import { PropertyTypeComponent } from '../../meta/propertytype.component';
 @Component({
     selector: 'mg-form-line',
     template: 
-        `<label for="{{propertytype.entityType.singular}}_{{propertytype.name}}">
-            {{propertytype.name | titleCase}}
-        </label>
+        `<label for="{{propertytype.entityType.singular}}_{{propertytype.name}}">{{propertytype.name | titleCase}}</label>
         <input 
             type="text"
             id="{{propertytype.entityType.singular}}_{{propertytype.name}}" 

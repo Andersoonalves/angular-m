@@ -9,7 +9,7 @@
       [entitytype]="entitytype" 
       [mgForm]="myForm"></div>
 
-    <button type="submit">Create {{ entitytype.singular | titleCase }}</button>  
+    <input type="submit" value="Create {{ entitytype.singular | titleCase }}">
   </form> 
 
   <a routerLink="/{{entitytype.plural}}">Back</a>
