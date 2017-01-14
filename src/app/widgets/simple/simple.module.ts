@@ -2,7 +2,7 @@ import { forwardRef } from '@angular/core';
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { PlainTextComponent } from './plain';
 import { BoldTextComponent } from './bold';
@@ -22,7 +22,8 @@ export const SIMPLE_WIDGETS_DIRECTIVES = [
   imports: [
     CommonModule,
     FormsModule,
-    PipesModule
+    PipesModule,
+    ReactiveFormsModule
   ],
   declarations: [
     SIMPLE_WIDGETS_DIRECTIVES
@@ -30,7 +31,8 @@ export const SIMPLE_WIDGETS_DIRECTIVES = [
   exports: [
     SIMPLE_WIDGETS_DIRECTIVES,
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class SimpleModule { }

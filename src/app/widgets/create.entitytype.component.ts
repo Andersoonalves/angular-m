@@ -2,6 +2,11 @@ import 'rxjs/add/operator/switchMap';
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
+import {  
+  FormBuilder,  
+  FormGroup  
+} from '@angular/forms';
+
 import { slideInDownAnimation } from '../animations';
 
 import { EntityType } from '../meta/entity.type';
@@ -17,13 +22,26 @@ export class CreateEntityTypeComponent extends EntityTypeComponent implements On
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display')   display = 'block';
   @HostBinding('style.position')  position = 'absolute';
+  myForm: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private domain: DomainService
+    private domain: DomainService,
+    private fb: FormBuilder
   ) {
     super();
+  }
+
+  configureForm(entityType: EntityType) {
+    this.entitytype = entityType;
+    let fbConf = {};
+
+    entityType.properties.forEach( propertyType => {
+      fbConf[propertyType.name] = ['']; // TO DO Add validators here according to metadata
+    });
+
+    this.myForm = this.fb.group(fbConf);  
   }
 
   ngOnInit() {
@@ -32,10 +50,12 @@ export class CreateEntityTypeComponent extends EntityTypeComponent implements On
         (params: Params) =>
           this.domain.findEntityType(params['entitytypename']))
       .subscribe(
-        (entity: any) => {
-          this.entitytype = entity;
-          console.log(entity);
+        (entityType: any) => {
+          this.configureForm(entityType);
         });
   }
 
+  onSubmit(form: any): void {  
+    console.log('you submitted value:', form);  
+  }
 }

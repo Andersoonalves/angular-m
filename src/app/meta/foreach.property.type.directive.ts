@@ -1,5 +1,6 @@
 import { Component, ViewContainerRef, Directive, Type } from '@angular/core';
 import { ComponentRef, ComponentFactoryResolver, Input, Host, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 import { AbstractPortDirective } from './abstract.port.directive';
 import { EntityType } from './entity.type';
@@ -15,6 +16,7 @@ export class ForeachPropertyTypeDirective extends AbstractPortDirective implemen
 
   @Input('mgForeachPropertyType') port: string;
   @Input() entitytype: EntityType;
+  @Input() mgForm: FormGroup;
 
   constructor(
     private domain: DomainService,
@@ -33,6 +35,9 @@ export class ForeachPropertyTypeDirective extends AbstractPortDirective implemen
       let componentType = this.rule.getPropertyTypeWidget(propertytype, this.port);
       let componentRef = this.createComponent(componentType);
       componentRef.instance.propertytype = propertytype;
+      if (this.mgForm) {
+        componentRef.instance.mgFormControl = this.mgForm.controls[propertytype.name];
+      }
     });
   }
 

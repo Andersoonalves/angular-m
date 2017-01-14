@@ -6,7 +6,15 @@ import { PropertyTypeComponent } from '../../meta/propertytype.component';
 @Component({
     selector: 'mg-form-line',
     template: 
-        `<label>{{propertytype.name | titleCase}}</label>
-        <input id="{{propertytype.entityType.singular}}_{{propertytype.name}}"type="text"><br>`,
+        `<label for="{{propertytype.entityType.singular}}_{{propertytype.name}}">
+            {{propertytype.name | titleCase}}
+        </label>
+        <input 
+            type="text"
+            id="{{propertytype.entityType.singular}}_{{propertytype.name}}" 
+            placeholder="{{propertytype.name | titleCase}}"
+            [formControl]="mgFormControl"
+            ngModel>
+        <br>`,
 })
 export class FormLineComponent extends PropertyTypeComponent { }
