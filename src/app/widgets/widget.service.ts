@@ -5,6 +5,7 @@ import { RuleService } from './rule.service';
 import { EntityTypeRouterComponent } from '../widgets/router/entitytype.router';
 import { ThComponent } from '../widgets/simple/th';
 import { FormLineComponent } from '../widgets/simple/form.line';
+import { ShowLineComponent } from '../widgets/simple/show.line';
 
 @Injectable()
 export class WidgetService {
@@ -14,6 +15,7 @@ export class WidgetService {
     ruleService.addDefaultPropertyTypeRule('table_head', ThComponent);
     ruleService.addPropertyTypeRule('form_line', "*", 'matricula', null, FormLineComponent, { inputType: "number"});
     ruleService.addDefaultPropertyTypeRule('form_line', FormLineComponent, { inputType: "text"});
+    ruleService.addDefaultPropertyRule('show_line', ShowLineComponent);
   }
 
 }

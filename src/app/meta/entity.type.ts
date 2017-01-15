@@ -23,5 +23,11 @@ export class PropertyType {
 }
 
 export class Entity {
-      constructor(public id: number, public entityType: EntityType) { }
+    properties: Property [] = [];
+
+    constructor(public id: number, public entityType: EntityType) { }
+}
+
+export class Property {
+    constructor(public entity: Entity, public propertyType: PropertyType, public value: any) {}
 }

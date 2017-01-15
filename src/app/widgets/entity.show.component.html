@@ -1,6 +1,6 @@
 <div *ngIf="entity">
 
-  <div>{{entity.nome}}</div>
+  <div [mgForeachProperty]="'show_line'" [entity]="entity"></div>
 
   <a routerLink="/{{entity.entityType.plural}}">Back</a>
 </div>
