@@ -15,7 +15,7 @@ const appRoutes: Routes = [
   { path: ':entitytypename', component: EntityTypeDetailsComponent },
   { path: ':entitytypename/new', component: CreateEntityTypeComponent },
   { path: ':entitytypename/:key', component: EntityShowComponent },
-  { path: '**', component: PageNotFoundComponent }  
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 

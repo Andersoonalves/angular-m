@@ -4,7 +4,7 @@ export class EntityType {
 
     constructor(public singular: string, public plural: string, public tags: any) {
         if (!tags.id) {
-            throw `Tag id is mandatory to set the primary key of ${singular} Entity`
+            throw `Tag id is mandatory to set the primary key of ${singular} Entity`;
         }
     }
 

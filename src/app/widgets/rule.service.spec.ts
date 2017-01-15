@@ -1,5 +1,5 @@
 import { DomainService } from '../domain/domain.service';
-import { RuleService, EntityTypeRuleService, PropertyTypeRuleService } from './rule.service';
+import { RuleService, EntityTypeRuleService, PropertyTypeRuleService, PropertyRuleService } from './rule.service';
 import { EntityType } from '../meta/entity.type';
 import { PlainTextComponent } from './simple/plain';
 import { BoldTextComponent } from './simple/bold';
@@ -7,10 +7,11 @@ import { BoldTextComponent } from './simple/bold';
 describe( 'Service: MetadataService', () => {
 
     let service: RuleService;
-    let fakeTags = { id: "id" };
+    let fakeTags = { id: 'id' };
 
     beforeEach( () => {
-        service = new RuleService(new EntityTypeRuleService(), new PropertyTypeRuleService());
+        service = new RuleService(
+            new EntityTypeRuleService(), new PropertyTypeRuleService(), new PropertyRuleService());
     });
 
     it( 'Add rules', () => {
@@ -33,21 +34,21 @@ describe( 'Service: MetadataService', () => {
         let customerET = new EntityType('customer', 'customers', fakeTags);
 
 
-        service.addEntityTypeRule('entitieslist', productET.singular, BoldTextComponent, {conf1: "abc"});
-        service.addEntityTypeRule('entitieslist', branchET.singular, BoldTextComponent, {conf2: "def"});
-        service.addDefaultEntityTypeRule('entitieslist', PlainTextComponent, {conf2: "aaa"});
+        service.addEntityTypeRule('entitieslist', productET.singular, BoldTextComponent, {conf1: 'abc'});
+        service.addEntityTypeRule('entitieslist', branchET.singular, BoldTextComponent, {conf2: 'def'});
+        service.addDefaultEntityTypeRule('entitieslist', PlainTextComponent, {conf2: 'aaa'});
 
         let productWC = service.getEntityTypeWidget(productET, 'entitieslist');
         expect(productWC.widget).toBe(BoldTextComponent);
-        expect(productWC.configuration.conf1).toBe("abc");
+        expect(productWC.configuration.conf1).toBe('abc');
 
         let branchWC = service.getEntityTypeWidget(branchET, 'entitieslist');
         expect(branchWC.widget).toBe(BoldTextComponent);
-        expect(branchWC.configuration.conf2).toBe("def");
+        expect(branchWC.configuration.conf2).toBe('def');
 
         let customerWC = service.getEntityTypeWidget(customerET, 'entitieslist');
         expect(customerWC.widget).toBe(PlainTextComponent);
-        expect(customerWC.configuration.conf2).toBe("aaa");
+        expect(customerWC.configuration.conf2).toBe('aaa');
     });
 
 });

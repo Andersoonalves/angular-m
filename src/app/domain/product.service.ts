@@ -2,8 +2,8 @@ import { InMemoryService } from '../meta/inmemory.service';
 import { EntityType, Entity } from '../meta/entity.type';
 
 
-let productEntityType = 
-    new EntityType('product', 'products', { id: "id" })
+let productEntityType =
+    new EntityType('product', 'products', { id: 'id' })
         .property('id', 'number')
         .property('name', 'string');
 

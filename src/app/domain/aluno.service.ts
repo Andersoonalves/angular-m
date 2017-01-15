@@ -2,8 +2,8 @@ import { EntityType, Entity } from '../meta/entity.type';
 import { InMemoryService } from '../meta/inmemory.service';
 
 
-let alunoEntityType = 
-    new EntityType('aluno', 'alunos', {id: "nome"})
+let alunoEntityType =
+    new EntityType('aluno', 'alunos', {id: 'nome'})
         .property('nome', 'string')
         .property('matricula', 'number');
 

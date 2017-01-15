@@ -22,11 +22,11 @@ describe( 'Service: DomainService', () => {
     });
 
     it( 'Add entities', () => {
-        service.addEntityType(new EntityType('Car', 'cars', {id: "description"})
+        service.addEntityType(new EntityType('Car', 'cars', {id: 'description'})
             .property('description', 'string')
             .property('price', 'number'));
 
-        service.addEntityType(new EntityType('Customer', 'Customers', {id: "name"})
+        service.addEntityType(new EntityType('Customer', 'Customers', {id: 'name'})
             .property('name', 'string')
             .property('birthdate', 'date'));
 
@@ -35,12 +35,12 @@ describe( 'Service: DomainService', () => {
     });
 
     it( 'Tags', () => {
-        let carTags = {id: "description", tag1: "abc"};
+        let carTags = {id: 'description', tag1: 'abc'};
         service.addEntityType(new EntityType('Car', 'cars', carTags)
             .property('description', 'string')
             .property('price', 'number'));
 
-        let customerTags = {id: "name", tag1: "abc"};
+        let customerTags = {id: 'name', tag1: 'abc'};
         service.addEntityType(new EntityType('Customer', 'Customers', customerTags)
             .property('name', 'string')
             .property('birthdate', 'date'));

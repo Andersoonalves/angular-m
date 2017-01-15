@@ -10,12 +10,12 @@ import { EntityTypeDetailsComponent } from './entitytype.details.component';
 import { EntityShowComponent } from './entity.show.component';
 import { CreateEntityTypeComponent } from './create.entitytype.component';
 
-import { 
-    AbstractRuleService, 
-    EntityTypeRuleService, 
-    PropertyTypeRuleService, 
+import {
+    AbstractRuleService,
+    EntityTypeRuleService,
+    PropertyTypeRuleService,
     PropertyRuleService,
-    RuleService 
+    RuleService
 } from './rule.service';
 
 import { WidgetService } from './widget.service';
