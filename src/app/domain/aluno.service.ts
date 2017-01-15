@@ -15,13 +15,6 @@ export class Aluno extends Entity {
 
 export class AlunoService extends InMemoryService {
 
-    constructor() {
-        super();
-        this.data.push(new Aluno(1, 'John', 123));
-        this.data.push(new Aluno(2, 'Mary', 234));
-        this.data.push(new Aluno(3, 'Bill', 345));
-    }
-
     describeEntityType(): EntityType {
         return alunoEntityType;
     }

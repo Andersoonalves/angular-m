@@ -53,5 +53,6 @@ export class CreateEntityTypeComponent extends EntityTypeComponent implements On
   onSubmit(form: any): void { 
     this.domain.getService(this.entitytype.singular).create(form); 
     console.log('you submitted value:', form);  
+    this.router.navigate([this.entitytype.plural, form[this.entitytype.tags.id] ]);
   }
 }

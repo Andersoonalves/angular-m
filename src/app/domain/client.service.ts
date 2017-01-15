@@ -16,13 +16,6 @@ export class Client extends Entity {
 
 export class ClientService extends InMemoryService {
 
-    constructor() {
-        super();
-        this.data.push(new Client(1, 'John'));
-        this.data.push(new Client(2, 'Mary'));
-        this.data.push(new Client(3, 'Bill'));
-    }
-
     describeEntityType(): EntityType {
         return clientEntityType;
     }

@@ -6,6 +6,7 @@ export abstract class InMemoryService extends AbstractService {
 
     protected data: any[] = [];
 
+
     listAll() {
         return Promise.resolve(this.data);
     }
@@ -14,12 +15,14 @@ export abstract class InMemoryService extends AbstractService {
         let entityType: EntityType = this.describeEntityType();
         let idPropertyType: string = entityType.tags.id;
         return this.listAll()
-            .then(items => items.find(item => item[idPropertyType] === id));
+            .then(items => items.find(item => {
+                return item[idPropertyType] === id;
+            }));
     }
 
-    create(entity: any) {
+    create(entity: Entity) {
+        entity.entityType = this.describeEntityType();
         this.data.push(entity);
-        console.log(entity);
     }
 
 }
