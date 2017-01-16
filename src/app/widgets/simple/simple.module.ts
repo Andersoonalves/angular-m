@@ -9,7 +9,10 @@ import { BoldTextComponent } from './bold';
 import { ThComponent } from './th';
 import { FormLineComponent } from './form.line';
 import { ShowLineComponent } from './show.line';
+import { EntityLineComponent } from './entity.line';
+import { TdComponent } from './td';
 
+import { MetaModule } from '../../meta/meta.module';
 import { PipesModule } from '../../pipes/pipes.module';
 
 export const SIMPLE_WIDGETS_DIRECTIVES = [
@@ -17,7 +20,9 @@ export const SIMPLE_WIDGETS_DIRECTIVES = [
   forwardRef(() => BoldTextComponent),
   forwardRef(() => ThComponent),
   forwardRef(() => FormLineComponent),
-  forwardRef(() => ShowLineComponent)
+  forwardRef(() => ShowLineComponent),
+  forwardRef(() => EntityLineComponent),
+  forwardRef(() => TdComponent)
 ];
 
 @NgModule({
@@ -25,7 +30,8 @@ export const SIMPLE_WIDGETS_DIRECTIVES = [
     CommonModule,
     FormsModule,
     PipesModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MetaModule
   ],
   declarations: [
     SIMPLE_WIDGETS_DIRECTIVES

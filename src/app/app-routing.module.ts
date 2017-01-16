@@ -2,7 +2,7 @@ import { NgModule }              from '@angular/core';
 import { RouterModule, Routes }  from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-import { EntityTypeDetailsComponent } from './widgets/entitytype.details.component';
+import { EntityListingComponent } from './widgets/entity.listing.component';
 import { EntityShowComponent } from './widgets/entity.show.component';
 import { CreateEntityTypeComponent } from './widgets/create.entitytype.component';
 import { HomeComponent } from './widgets/router/home.component';
@@ -12,7 +12,7 @@ import { WidgetModule } from './widgets/widget.module';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path: ':entitytypename', component: EntityTypeDetailsComponent },
+  { path: ':entitytypename', component: EntityListingComponent },
   { path: ':entitytypename/new', component: CreateEntityTypeComponent },
   { path: ':entitytypename/:key', component: EntityShowComponent },
   { path: '**', component: PageNotFoundComponent }

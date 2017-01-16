@@ -23,9 +23,14 @@ export class PropertyType {
 }
 
 export class Entity {
-    properties: Property [] = [];
 
-    constructor(public id: number, public entityType: EntityType) { }
+    constructor(public entityType: EntityType, public properties: any) { }
+
+    get key(): any {
+        let keyName = this.entityType.tags.id;
+        return this.properties[keyName];
+    }
+
 }
 
 export class Property {

@@ -9,10 +9,11 @@ import { EntityTypeComponent } from '../meta/entitytype.component';
 import { DomainService } from '../domain/domain.service';
 
 @Component({
-  templateUrl: './entitytype.details.component.html',
+  selector: 'div [mgEntityListing]',
+  templateUrl: './entity.listing.component.html',
   animations: [ slideInDownAnimation ]
 })
-export class EntityTypeDetailsComponent extends EntityTypeComponent implements OnInit {
+export class EntityListingComponent extends EntityTypeComponent implements OnInit {
 
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display')   display = 'block';

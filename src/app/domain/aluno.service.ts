@@ -8,8 +8,8 @@ let alunoEntityType =
         .property('matricula', 'number');
 
 export class Aluno extends Entity {
-  constructor(public id: number, public nome: string, public matricula: number) {
-      super(id, alunoEntityType);
+  constructor(public nome: string, public matricula: number) {
+      super(alunoEntityType, {nome: nome, matricula: matricula});
   }
 }
 

@@ -4,7 +4,6 @@ import { FormGroup } from '@angular/forms';
 
 import { AbstractPortDirective } from './abstract.port.directive';
 import { Entity, Property } from './entity.type';
-import { ForeachEntityTypeDirective } from './foreach.entity.type.directive';
 import { RuleService } from '../widgets/rule.service';
 import { DomainService } from '../domain/domain.service';
 
@@ -32,7 +31,7 @@ export class ForeachPropertyDirective extends AbstractPortDirective implements O
     super.refreshContent();
 
     this.entity.entityType.propertyTypes.forEach((propertyType) => {
-      let property = new Property(this.entity, propertyType, this.entity[propertyType.name]);
+      let property = new Property(this.entity, propertyType, this.entity.properties[propertyType.name]);
       let widgetConnection = this.rule.getPropertyWidget(property, this.port);
       let componentRef = this.createComponent(widgetConnection.widget);
       componentRef.instance.property = property;
