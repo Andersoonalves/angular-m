@@ -34,7 +34,6 @@ export class EntityTypeDetailsComponent extends EntityTypeComponent implements O
       .subscribe(
         (entity: any) => {
           this.entitytype = entity;
-          console.log(entity);
         });
   }
 

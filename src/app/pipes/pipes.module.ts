@@ -6,4 +6,4 @@ import { TitleCase } from './titlecase.pipe';
      declarations:   [TitleCase],
      exports:        [TitleCase]
  })
-export class PipesModule {} 
+export class PipesModule {}

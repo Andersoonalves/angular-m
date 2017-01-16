@@ -8,6 +8,7 @@ import { PlainTextComponent } from './plain';
 import { BoldTextComponent } from './bold';
 import { ThComponent } from './th';
 import { FormLineComponent } from './form.line';
+import { ShowLineComponent } from './show.line';
 
 import { PipesModule } from '../../pipes/pipes.module';
 
@@ -15,7 +16,8 @@ export const SIMPLE_WIDGETS_DIRECTIVES = [
   forwardRef(() => PlainTextComponent),
   forwardRef(() => BoldTextComponent),
   forwardRef(() => ThComponent),
-  forwardRef(() => FormLineComponent)
+  forwardRef(() => FormLineComponent),
+  forwardRef(() => ShowLineComponent)
 ];
 
 @NgModule({

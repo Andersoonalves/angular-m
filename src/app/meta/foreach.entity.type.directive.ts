@@ -2,7 +2,6 @@ import { Component, ViewContainerRef, Directive, Type } from '@angular/core';
 import { ComponentRef, ComponentFactoryResolver, Input, ViewChild } from '@angular/core';
 
 import { AbstractPortDirective } from './abstract.port.directive';
-import { ForeachPropertyTypeDirective } from './foreach.property.type.directive';
 
 import { RuleService } from '../widgets/rule.service';
 import { DomainService } from '../domain/domain.service';

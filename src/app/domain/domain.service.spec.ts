@@ -22,16 +22,34 @@ describe( 'Service: DomainService', () => {
     });
 
     it( 'Add entities', () => {
-        service.addEntityType(new EntityType('Car', 'cars')
+        service.addEntityType(new EntityType('Car', 'cars', {id: 'description'})
             .property('description', 'string')
             .property('price', 'number'));
 
-        service.addEntityType(new EntityType('Customer', 'Customers')
+        service.addEntityType(new EntityType('Customer', 'Customers', {id: 'name'})
             .property('name', 'string')
             .property('birthdate', 'date'));
 
         helper.checkService();
         helper.checkEntityTypes(5, 'products', 'clients', 'alunos', 'cars', 'Customers');
+    });
+
+    it( 'Tags', () => {
+        let carTags = {id: 'description', tag1: 'abc'};
+        service.addEntityType(new EntityType('Car', 'cars', carTags)
+            .property('description', 'string')
+            .property('price', 'number'));
+
+        let customerTags = {id: 'name', tag1: 'abc'};
+        service.addEntityType(new EntityType('Customer', 'Customers', customerTags)
+            .property('name', 'string')
+            .property('birthdate', 'date'));
+
+        helper.checkService();
+        helper.checkEntityTypes(5, 'products', 'clients', 'alunos', 'cars', 'Customers');
+
+        helper.checkEntityType('cars', carTags);
+        helper.checkEntityType('Customers', customerTags);
     });
 
 });
