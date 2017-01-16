@@ -10,7 +10,7 @@ let productEntityType =
 
 export class Product extends Entity {
     constructor(public id: number, public name: string) {
-        super(id, productEntityType);
+        super(productEntityType, {id: id, name: name});
     }
 }
 

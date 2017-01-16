@@ -4,8 +4,8 @@ import { Component, Input } from '@angular/core';
 import { PropertyComponent } from '../../meta/property.component';
 
 @Component({
-    selector: 'mg-show-line',
+    selector: 'p [mgShowLine]',
     template:
-        `<p><strong>{{property.propertyType.name | titleCase}}:</strong> {{property.value}}</p>`,
+        `<strong>{{property.propertyType.name | titleCase}}:</strong> {{property.value}}`,
 })
 export class ShowLineComponent extends PropertyComponent { }

@@ -161,13 +161,13 @@ class PropertyRule extends Rule {
   }
 
   getWidgetType(): WidgetType {
-    return WidgetType.PropertyType;
+    return WidgetType.Property;
   }
 }
 
 // TO DO this class is identical with PropertyTypeRuleService
 @Injectable()
-export class PropertyRuleService extends AbstractRuleService<PropertyTypeRule> {
+export class PropertyRuleService extends AbstractRuleService<PropertyRule> {
 
   getWidget(property: Property, port: string): WidgetConnection {
     let defaultScope: PropertyTypeRule;
@@ -202,13 +202,56 @@ export class PropertyRuleService extends AbstractRuleService<PropertyTypeRule> {
 }
 
 
+// TO DO this class is identical with EntityTypeRule
+class EntityRule extends Rule {
+  constructor(port: string, entitySelector: string, component: Type<any>, configuration?: any) {
+    super(port, entitySelector, component, configuration);
+  };
+
+  hasDefaultScope(): boolean {
+    return DEFAULT_SCOPE === this.entitySelector;
+  }
+
+  getWidgetType(): WidgetType {
+    return WidgetType.Entity;
+  }
+}
+
+// TO DO this class is identical with EntityTypeRuleService
+@Injectable()
+export class EntityRuleService extends AbstractRuleService<EntityRule> {
+
+  getWidget(entityType: EntityType, port: string): WidgetConnection {
+    let defaultScope: Rule;
+    let matchName: Rule;
+
+    this.rules.forEach(rule => {
+      if (rule.port === port) {
+        if (rule.hasDefaultScope()) {
+          defaultScope = rule;
+        } else if (this.matchExpression(entityType.singular, rule.entitySelector)) {
+          matchName = rule;
+        }
+      }
+    });
+
+    this.checkDefaultScope(defaultScope, port);
+
+    let matchRule = (matchName) ? matchName : defaultScope;
+
+    return new WidgetConnection(matchRule.component, matchRule.configuration);
+  }
+}
+
+
 @Injectable()
 export class RuleService {
 
   constructor(
     private entityTypeRuleService: EntityTypeRuleService,
     private propertyTypeRuleService: PropertyTypeRuleService,
-    private propertyRuleService: PropertyRuleService
+    private propertyRuleService: PropertyRuleService,
+    private entityRuleService: EntityRuleService
   ) { }
 
   addDefaultEntityTypeRule(port: string, component: Type<any>, configuration?: any) {
@@ -251,4 +294,18 @@ export class RuleService {
   getPropertyWidget(property: Property, port: string): WidgetConnection {
     return this.propertyRuleService.getWidget(property, port);
   }
+
+  addDefaultEntityRule(port: string, component: Type<any>, configuration?: any) {
+    this.addEntityRule(port, DEFAULT_SCOPE, component, configuration);
+  }
+
+  addEntityRule(port: string, entitySelector: string, component: Type<any>, configuration?: any) {
+    let rule = new EntityRule(port, entitySelector, component, configuration);
+    this.entityRuleService.addRule(rule);
+  }
+
+  getEntityWidget(entityType: EntityType, port: string): WidgetConnection {
+    return this.entityRuleService.getWidget(entityType, port);
+  }
+
 }

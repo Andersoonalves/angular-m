@@ -10,6 +10,6 @@ export abstract class AbstractService {
 
     abstract describeEntityType(): EntityType;
 
-    abstract create(object: any);
+    abstract create(properties: any);
 
 }

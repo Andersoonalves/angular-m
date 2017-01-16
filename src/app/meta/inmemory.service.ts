@@ -16,12 +16,13 @@ export abstract class InMemoryService extends AbstractService {
         let idPropertyType: string = entityType.tags.id;
         return this.listAll()
             .then(items => items.find(item => {
-                return item[idPropertyType] === id;
+                return item.properties[idPropertyType] === id;
             }));
     }
 
-    create(entity: Entity) {
-        entity.entityType = this.describeEntityType();
+    create(properties: Entity) {
+        let entity = new Entity(this.describeEntityType(), properties);
+        console.debug('create', entity);
         this.data.push(entity);
     }
 

@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 import { PropertyTypeComponent } from '../../meta/propertytype.component';
 
 @Component({
-    selector: 'mg-th',
-    template: '<th>{{propertytype.name | titleCase}}</th>',
+    selector: 'th [mgTh]',
+    template: '{{propertytype.name | titleCase}}',
 })
 export class ThComponent extends PropertyTypeComponent { }

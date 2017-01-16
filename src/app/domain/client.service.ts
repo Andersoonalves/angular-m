@@ -10,7 +10,7 @@ let clientEntityType =
 
 export class Client extends Entity {
     constructor(public id: number, public name: string) {
-        super(id, clientEntityType);
+        super(clientEntityType, {id: id, name: name});
     }
 }
 

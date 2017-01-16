@@ -6,7 +6,7 @@ import { MetaRouterModule } from './router/metarouter.module';
 
 // TODO declare this dependency in just one file
 import { EntityTypeRouterComponent } from './router/entitytype.router';
-import { EntityTypeDetailsComponent } from './entitytype.details.component';
+import { EntityListingComponent } from './entity.listing.component';
 import { EntityShowComponent } from './entity.show.component';
 import { CreateEntityTypeComponent } from './create.entitytype.component';
 
@@ -15,6 +15,7 @@ import {
     EntityTypeRuleService,
     PropertyTypeRuleService,
     PropertyRuleService,
+    EntityRuleService,
     RuleService
 } from './rule.service';
 
@@ -36,15 +37,16 @@ import { PipesModule } from '../pipes/pipes.module';
         EntityTypeRuleService,
         PropertyTypeRuleService,
         PropertyRuleService,
+        EntityRuleService,
         WidgetService
     ],
     declarations: [
-        EntityTypeDetailsComponent,
+        EntityListingComponent,
         EntityShowComponent,
         CreateEntityTypeComponent
     ],
     exports: [
-        EntityTypeDetailsComponent,
+        EntityListingComponent,
         EntityShowComponent,
         CreateEntityTypeComponent
     ],
