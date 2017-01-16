@@ -1,4 +1,3 @@
-import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 import { PropertyType } from './entity.type';

@@ -1,6 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { EntityType } from '../../meta/entity.type';
 import { EntityTypeComponent } from '../../meta/entitytype.component';
 
 @Component({

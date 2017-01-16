@@ -1,5 +1,5 @@
-import { Component, ViewContainerRef, Directive, Type } from '@angular/core';
-import { ComponentRef, ComponentFactoryResolver, Input, ViewChild } from '@angular/core';
+import { ViewContainerRef, Directive } from '@angular/core';
+import { ComponentFactoryResolver, Input } from '@angular/core';
 
 import { AbstractPortDirective } from './abstract.port.directive';
 

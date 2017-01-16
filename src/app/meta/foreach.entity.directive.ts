@@ -1,6 +1,5 @@
-import { Component, ViewContainerRef, Directive, Type } from '@angular/core';
-import { ComponentRef, ComponentFactoryResolver, Input, Host, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { ViewContainerRef, Directive } from '@angular/core';
+import { ComponentFactoryResolver, Input, OnInit } from '@angular/core';
 
 import { AbstractPortDirective } from './abstract.port.directive';
 import { EntityType } from './entity.type';

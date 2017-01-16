@@ -4,7 +4,6 @@ import { ProductService} from './product.service';
 import { ClientService} from './client.service';
 import { AlunoService} from './aluno.service';
 import { EntityType } from '../meta/entity.type';
-import { RuleService } from '../widgets/rule.service';
 
 describe( 'Service: DomainService', () => {
 
