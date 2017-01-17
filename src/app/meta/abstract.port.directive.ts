@@ -1,4 +1,4 @@
-import { Component, ComponentRef, Type } from '@angular/core';
+import { ComponentRef, Type } from '@angular/core';
 import { AfterViewInit, OnInit, OnDestroy, ComponentFactoryResolver } from '@angular/core';
 import { OnChanges, SimpleChange, ViewContainerRef } from '@angular/core';
 

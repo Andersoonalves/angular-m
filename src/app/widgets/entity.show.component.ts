@@ -30,7 +30,7 @@ export class EntityShowComponent extends EntityComponent implements OnInit {
   }
 
   mapEntityParam(params: Params): Promise<Entity> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       this.domain.findEntityType(params['entitytypename']).then(
         (entityType: EntityType) => {
           let entityPromisse = this.domain.getService(entityType.singular).findUnique(params['key']);

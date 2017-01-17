@@ -1,6 +1,5 @@
-import { fdatasync } from 'fs';
 import { AbstractService } from './abstract.service';
-import { EntityType, Entity, PropertyType } from './entity.type';
+import { EntityType, Entity } from './entity.type';
 
 export abstract class InMemoryService extends AbstractService {
 

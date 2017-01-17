@@ -1,5 +1,4 @@
-import { EntityType } from '../../meta/entity.type';
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { PropertyTypeComponent } from '../../meta/propertytype.component';
 

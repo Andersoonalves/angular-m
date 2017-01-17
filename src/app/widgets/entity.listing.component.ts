@@ -4,7 +4,6 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { slideInDownAnimation } from '../animations';
 
-import { EntityType } from '../meta/entity.type';
 import { EntityTypeComponent } from '../meta/entitytype.component';
 import { DomainService } from '../domain/domain.service';
 
