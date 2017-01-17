@@ -21,8 +21,14 @@ export abstract class InMemoryService extends AbstractService {
 
     create(properties: Entity) {
         let entity = new Entity(this.describeEntityType(), properties);
-        console.debug('create', entity);
         this.data.push(entity);
+    }
+
+    edit(key: any, properties: Entity) {
+        let entity = new Entity(this.describeEntityType(), properties);
+        this.findUnique(key).then(
+            oldEntity => oldEntity.properties = entity.properties
+        );
     }
 
 }

@@ -14,10 +14,10 @@ import { DomainService } from '../domain/domain.service';
 import { TitleCase } from '../pipes/titlecase.pipe';
 
 @Component({
-  templateUrl: './create.entitytype.component.html',
+  templateUrl: './create.entity.component.html',
   animations: [ slideInDownAnimation ]
 })
-export class CreateEntityTypeComponent extends EntityTypeComponent implements OnInit {
+export class CreateEntityComponent extends EntityTypeComponent implements OnInit {
 
   @HostBinding('@routeAnimation') routeAnimation = true;
   @HostBinding('style.display')   display = 'block';

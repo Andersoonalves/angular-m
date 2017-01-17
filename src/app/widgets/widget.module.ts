@@ -6,9 +6,10 @@ import { MetaRouterModule } from './router/metarouter.module';
 
 // TODO declare this dependency in just one file
 import { EntityTypeRouterComponent } from './router/entitytype.router';
-import { EntityListingComponent } from './entity.listing.component';
-import { EntityShowComponent } from './entity.show.component';
-import { CreateEntityTypeComponent } from './create.entitytype.component';
+import { ListEntitiesComponent } from './list.entities.component';
+import { ShowEntityComponent } from './show.entity.component';
+import { CreateEntityComponent } from './create.entity.component';
+import { EditEntityComponent } from './edit.entity.component';
 
 import {
     AbstractRuleService,
@@ -41,14 +42,16 @@ import { PipesModule } from '../pipes/pipes.module';
         WidgetService
     ],
     declarations: [
-        EntityListingComponent,
-        EntityShowComponent,
-        CreateEntityTypeComponent
+        ListEntitiesComponent,
+        ShowEntityComponent,
+        CreateEntityComponent,
+        EditEntityComponent
     ],
     exports: [
-        EntityListingComponent,
-        EntityShowComponent,
-        CreateEntityTypeComponent
+        ListEntitiesComponent,
+        ShowEntityComponent,
+        CreateEntityComponent,
+        EditEntityComponent
     ],
     entryComponents: [
         SIMPLE_WIDGETS_DIRECTIVES

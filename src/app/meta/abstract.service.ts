@@ -12,4 +12,5 @@ export abstract class AbstractService {
 
     abstract create(properties: any);
 
+    abstract edit(key: any, properties: any);
 }
