@@ -10,14 +10,15 @@ import { EntityComponent } from '../meta/entity.component';
 import { DomainService } from '../domain/domain.service';
 
 @Component({
-  templateUrl: './entity.show.component.html',
-  animations: [ slideInDownAnimation ]
+  selector: 'div [mgShowEntity]',
+  templateUrl: './show.entity.component.html',
+  animations: [slideInDownAnimation]
 })
-export class EntityShowComponent extends EntityComponent implements OnInit {
+export class ShowEntityComponent extends EntityComponent implements OnInit {
 
   @HostBinding('@routeAnimation') routeAnimation = true;
-  @HostBinding('style.display')   display = 'block';
-  @HostBinding('style.position')  position = 'absolute';
+  @HostBinding('style.display') display = 'block';
+  @HostBinding('style.position') position = 'absolute';
   message: any;
 
   constructor(
@@ -44,14 +45,20 @@ export class EntityShowComponent extends EntityComponent implements OnInit {
     this.route.params
       .switchMap((params: Params) => this.mapEntityParam(params))
       .subscribe(
-        (entity: any) => {
-          this.entity = entity;
-        });
+      (entity: any) => {
+        this.entity = entity;
+      });
   }
 
   back() {
     this.router.navigate([this.entity.entityType.plural]);
     this.flash.clearMessage();
+    return false;
+  }
+
+  edit() {
+    this.flash.clearMessage();
+    this.router.navigate([this.entity.entityType.plural, this.entity.key, 'edit']);
     return false;
   }
 

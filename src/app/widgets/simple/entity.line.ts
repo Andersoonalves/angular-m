@@ -26,7 +26,7 @@ export class EntityLineComponent extends EntityComponent {
 
     edit() {
         this.flash.clearMessage();
-        this.router.navigate([this.entity.entityType.plural, this.entity.key, '/edit']);
+        this.router.navigate([this.entity.entityType.plural, this.entity.key, 'edit']);
         return false;
     }
 

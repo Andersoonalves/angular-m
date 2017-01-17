@@ -1,0 +1,17 @@
+<div *ngIf="entity">
+  <h1>Editing {{ entity.entityType.singular | titleCase }}</h1>
+
+  <form [formGroup]="myForm"  
+          (ngSubmit)="onSubmit(myForm.value)">
+
+    <div 
+      [mgForeachProperty]="'edit_form_line'" 
+      [entity]="entity" 
+      [mgForm]="myForm"></div>
+
+    <input type="submit" value="Update {{ entity.entityType.singular | titleCase }}">
+  </form> 
+
+  <a href="#" (click)="show()">Show</a>
+  <a href="#" (click)="back()">Back</a>
+</div>

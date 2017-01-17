@@ -8,6 +8,7 @@ import { PlainTextComponent } from './plain';
 import { BoldTextComponent } from './bold';
 import { ThComponent } from './th';
 import { FormLineComponent } from './form.line';
+import { EditFormLineComponent } from './edit.form.line';
 import { ShowLineComponent } from './show.line';
 import { EntityLineComponent } from './entity.line';
 import { TdComponent } from './td';
@@ -20,6 +21,7 @@ export const SIMPLE_WIDGETS_DIRECTIVES = [
   forwardRef(() => BoldTextComponent),
   forwardRef(() => ThComponent),
   forwardRef(() => FormLineComponent),
+  forwardRef(() => EditFormLineComponent),
   forwardRef(() => ShowLineComponent),
   forwardRef(() => EntityLineComponent),
   forwardRef(() => TdComponent)
