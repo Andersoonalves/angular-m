@@ -9,9 +9,9 @@ import { ProductService } from './product.service';
 import { AlunoService } from './aluno.service';
 
 export const DOMAIN_SERVICES = [
-  forwardRef(() => ClientService),
-  forwardRef(() => ProductService),
-  forwardRef(() => AlunoService)
+    forwardRef(() => ClientService),
+    forwardRef(() => ProductService),
+    forwardRef(() => AlunoService)
 ];
 
 @Injectable()
@@ -19,6 +19,7 @@ export class DomainService {
 
     private entityTypes: { [name: string]: EntityType; } = {};
     private services: { [entityTypeName: string]: AbstractService; } = {};
+
 
     constructor(
         private productService: ProductService,

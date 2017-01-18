@@ -35,7 +35,7 @@ export class CreateEntityComponent extends EntityTypeComponent implements OnInit
   }
 
   configureForm(entityType: EntityType) {
-    this.entitytype = entityType;
+    this.entityType = entityType;
     let fbConf = {};
 
     entityType.properties.forEach( propertyType => {
@@ -56,9 +56,9 @@ export class CreateEntityComponent extends EntityTypeComponent implements OnInit
   }
 
   onSubmit(form: any): void {
-    this.domain.getService(this.entitytype.singular).create(form);
-    let entityTypeName = TitleCase.toTitleCase(this.entitytype.singular);
+    this.domain.getService(this.entityType.singular).create(form);
+    let entityTypeName = TitleCase.toTitleCase(this.entityType.singular);
     this.flash.changeMessage(`${entityTypeName} was successfully created.`);
-    this.router.navigate([this.entitytype.plural, form[this.entitytype.tags.id] ]);
+    this.router.navigate([this.entityType.plural, form[this.entityType.tags.id] ]);
   }
 }

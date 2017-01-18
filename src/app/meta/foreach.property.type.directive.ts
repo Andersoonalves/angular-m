@@ -14,7 +14,7 @@ import { DomainService } from '../domain/domain.service';
 export class ForeachPropertyTypeDirective extends AbstractPortDirective implements OnInit {
 
   @Input('mgForeachPropertyType') port: string;
-  @Input() entitytype: EntityType;
+  @Input() entityType: EntityType;
   @Input() mgForm: FormGroup;
 
   constructor(
@@ -30,7 +30,7 @@ export class ForeachPropertyTypeDirective extends AbstractPortDirective implemen
   public refreshContent() {
     super.refreshContent();
 
-    this.entitytype.propertyTypes.forEach((propertytype) => {
+    this.entityType.propertyTypes.forEach((propertytype) => {
       let widgetConnection = this.rule.getPropertyTypeWidget(propertytype, this.port);
       let componentRef = this.createComponent(widgetConnection.widget);
       componentRef.instance.propertytype = propertytype;
