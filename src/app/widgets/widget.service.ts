@@ -19,7 +19,7 @@ export class WidgetService {
     ruleService.addPropertyTypeRule('form_line', '*', 'matricula', null, FormLineComponent, { inputType: 'number'});
     ruleService.addDefaultPropertyTypeRule('form_line', FormLineComponent, { inputType: 'text'});
     ruleService.addDefaultPropertyRule('show_line', ShowLineComponent);
-    ruleService.addDefaultEntityRule('table_lines', EntityLineComponent);
+    ruleService.addDefaultEntityRule('table_line', EntityLineComponent);
     ruleService.addDefaultPropertyRule('table_cell', TdComponent);
     ruleService.addPropertyRule('edit_form_line', '*', 'matricula', null, EditFormLineComponent, { inputType: 'number'});
     ruleService.addDefaultPropertyRule('edit_form_line', EditFormLineComponent, { inputType: 'text'});

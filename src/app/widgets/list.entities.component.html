@@ -1,17 +1,17 @@
-<div *ngIf="entitytype">
-  <h1>Listing {{ entitytype.plural | titleCase }}</h1>
+<div *ngIf="entityType">
+  <h1>Listing {{ entityType.plural | titleCase }}</h1>
   <table>
     <thead>
       <tr>
-      <div [mgForeachPropertyType]="'table_head'" [entitytype]="entitytype"></div>
+      <div [mgForeachPropertyType]="'table_head'" [entityType]="entityType"></div>
       <th colspan="3"></th>
       </tr>
     </thead>
-    <tbody>
-      <div [mgForeachEntity]="'table_lines'" [entitytype]="entitytype"></div>
+    <tbody>      
+      <div *ngFor="let entity of entities" [mgEntity]="'table_line'" [entity]="entity"></div>
     </tbody>
   </table>
 
-  <a routerLink="/{{entitytype.plural}}/new">New {{entitytype.singular | titleCase}}</a>
-  <a routerLink="/">Back</a>
+  <a href="#" (click)="create()">New {{entityType.singular | titleCase}}</a>
+  <a href="#" (click)="back()">Back</a> 
 </div>

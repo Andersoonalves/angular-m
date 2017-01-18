@@ -4,6 +4,6 @@ import { EntityTypeComponent } from '../../meta/entitytype.component';
 
 @Component({
     selector: 'mg-bold-text',
-    template: '<b>{{entitytype.name}}</b><br>',
+    template: '<b>{{entityType.name}}</b><br>',
 })
 export class BoldTextComponent extends EntityTypeComponent { }

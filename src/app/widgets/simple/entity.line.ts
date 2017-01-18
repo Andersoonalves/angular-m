@@ -3,9 +3,13 @@ import { Router } from '@angular/router';
 
 import { EntityComponent } from '../../meta/entity.component';
 import { FlashMessageService } from '../flash.message.service';
+import { DomainService } from '../../domain/domain.service';
+
+import { TitleCase } from '../../pipes/titlecase.pipe';
+
 
 @Component({
-    selector: 'tr [mgEntityTr]',
+    selector: 'tr [mgEntityLine]',
     template:
         `<div [mgForeachProperty]="'table_cell'" [entity]="entity"></div>
          <td> <a href="#" (click)="show()">Show</a></td>
@@ -14,7 +18,8 @@ import { FlashMessageService } from '../flash.message.service';
 })
 export class EntityLineComponent extends EntityComponent {
 
-    constructor(private router: Router, private flash: FlashMessageService) {
+    constructor(private router: Router, private flash: FlashMessageService,
+            private domain: DomainService) {
         super();
     }
 
@@ -31,6 +36,11 @@ export class EntityLineComponent extends EntityComponent {
     }
 
     destroy() {
+        if (confirm('Are you sure?')) {
+            this.domain.getService(this.entity.entityType.singular).delete(this.entity.key);
+            let entityTypeName = TitleCase.toTitleCase(this.entity.entityType.singular);
+            this.flash.changeMessage(`${entityTypeName} was successfully destroyed.`);
+        }
         return false;
     }
 }

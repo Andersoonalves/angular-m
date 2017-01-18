@@ -1,5 +1,6 @@
 import { AbstractService } from './abstract.service';
 import { EntityType, Entity } from './entity.type';
+import { TitleCase } from '../pipes/titlecase.pipe';
 
 export abstract class InMemoryService extends AbstractService {
 
@@ -29,6 +30,20 @@ export abstract class InMemoryService extends AbstractService {
         this.findUnique(key).then(
             oldEntity => oldEntity.properties = entity.properties
         );
+    }
+
+    delete(key: any) {
+        for (let i = 0; i < this.data.length; i++) {
+            let item = this.data[i];
+            if (item.key === key) {
+                this.data.splice(i, 1);
+                return;
+            }
+        }
+
+        let entityType: EntityType = this.describeEntityType();
+        let entityTypeName = TitleCase.toTitleCase(entityType.singular);
+        throw `${entityTypeName} ${key} not found`;
     }
 
 }
