@@ -1,7 +1,6 @@
 import { Injectable, Type } from '@angular/core';
 
-import { RuleService } from './rule.service';
-
+import { AngularMService } from '../angular.m.service';
 import { EntityTypeRouterComponent } from '../entitytype.router';
 import { ThComponent } from './simple/th';
 import { FormLineComponent } from './simple/form.line';
@@ -13,16 +12,16 @@ import { TdComponent } from './simple/td';
 @Injectable()
 export class WidgetService {
 
-  constructor(ruleService: RuleService) {
-    ruleService.addDefaultEntityTypeRule('entitytypes_menu', EntityTypeRouterComponent);
-    ruleService.addDefaultPropertyTypeRule('table_head', ThComponent);
-    ruleService.addPropertyTypeRule('form_line', '*', 'matricula', null, FormLineComponent, { inputType: 'number'});
-    ruleService.addDefaultPropertyTypeRule('form_line', FormLineComponent, { inputType: 'text'});
-    ruleService.addDefaultPropertyRule('show_line', ShowLineComponent);
-    ruleService.addDefaultEntityRule('table_line', EntityLineComponent);
-    ruleService.addDefaultPropertyRule('table_cell', TdComponent);
-    ruleService.addPropertyRule('edit_form_line', '*', 'matricula', null, EditFormLineComponent, { inputType: 'number'});
-    ruleService.addDefaultPropertyRule('edit_form_line', EditFormLineComponent, { inputType: 'text'});
+  constructor(angularm: AngularMService) {
+    angularm.addDefaultEntityTypeRule('entitytypes_menu', EntityTypeRouterComponent);
+    angularm.addDefaultPropertyTypeRule('table_head', ThComponent);
+    angularm.addPropertyTypeRule('form_line', '*', 'matricula', null, FormLineComponent, { inputType: 'number'});
+    angularm.addDefaultPropertyTypeRule('form_line', FormLineComponent, { inputType: 'text'});
+    angularm.addDefaultPropertyRule('show_line', ShowLineComponent);
+    angularm.addDefaultEntityRule('table_line', EntityLineComponent);
+    angularm.addDefaultPropertyRule('table_cell', TdComponent);
+    angularm.addPropertyRule('edit_form_line', '*', 'matricula', null, EditFormLineComponent, { inputType: 'number'});
+    angularm.addDefaultPropertyRule('edit_form_line', EditFormLineComponent, { inputType: 'text'});
   }
 
 }

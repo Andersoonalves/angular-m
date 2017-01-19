@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 
 import { EntityType } from './entity.type';
 
-@Injectable()
 export abstract class AbstractService {
 
     abstract listAll(): Promise<any[]>;

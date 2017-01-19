@@ -1,6 +1,7 @@
 import { ViewContainerRef, Directive } from '@angular/core';
 import { ComponentFactoryResolver, Input } from '@angular/core';
 
+import { AngularMService } from '../angular.m.service';
 import { AbstractPortDirective } from './abstract.port.directive';
 
 
@@ -13,15 +14,16 @@ export class ForeachEntityTypeDirective extends AbstractPortDirective {
 
   constructor(
     componentTarget: ViewContainerRef,
-    compiler: ComponentFactoryResolver
+    compiler: ComponentFactoryResolver,
+    angularm: AngularMService
   ) {
-    super(componentTarget, compiler);
+    super(componentTarget, compiler, angularm);
   }
 
   public refreshContent() {
     super.refreshContent();
 
-    this.forEachEntityType( (entityType) => {
+    this.foreachEntityType( (entityType) => {
       this.createEntityTypeWidget(entityType, this.port);
     });
   }

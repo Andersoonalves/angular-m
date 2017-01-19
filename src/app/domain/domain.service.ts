@@ -1,4 +1,3 @@
-import { Injectable } from '@angular/core';
 import { forwardRef } from '@angular/core';
 
 import { EntityType } from '../meta/entity.type';
@@ -14,25 +13,23 @@ export const DOMAIN_SERVICES = [
     forwardRef(() => AlunoService)
 ];
 
-@Injectable()
 export class DomainService {
 
     private entityTypes: { [name: string]: EntityType; } = {};
     private services: { [entityTypeName: string]: AbstractService; } = {};
 
-
-    static serviceTypes(): any[] {
-        return [ProductService, ClientService, AlunoService];
-    }
+    private productService: ProductService;
+    private clientService: ClientService;
+    private alunoService: AlunoService;
 
     constructor(
-        private productService: ProductService,
-        private clientService: ClientService,
-        private alunoService: AlunoService
     ) {
-        this.addService(productService);
-        this.addService(clientService);
-        this.addService(alunoService);
+        this.productService = new ProductService();
+        this.clientService = new ClientService();
+        this.alunoService = new AlunoService();
+        this.addService(this.productService);
+        this.addService(this.clientService);
+        this.addService(this.alunoService);
     }
 
     findEntityType(name: string): Promise<EntityType> {

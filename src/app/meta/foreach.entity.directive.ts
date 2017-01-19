@@ -1,10 +1,9 @@
 import { ViewContainerRef, Directive } from '@angular/core';
 import { ComponentFactoryResolver, Input, OnInit } from '@angular/core';
 
+import { AngularMService } from '../angular.m.service';
 import { AbstractPortDirective } from './abstract.port.directive';
 import { EntityType } from './entity.type';
-import { RuleService } from '../widgets/rule.service';
-import { DomainService } from '../domain/domain.service';
 
 
 @Directive({
@@ -16,26 +15,19 @@ export class ForeachEntityDirective extends AbstractPortDirective implements OnI
   @Input() entitytype: EntityType;
 
   constructor(
-    private domain: DomainService,
-    private rule: RuleService,
     componentTarget: ViewContainerRef,
-    compiler: ComponentFactoryResolver
+    compiler: ComponentFactoryResolver, 
+    angularm: AngularMService
   ) {
-    super(componentTarget, compiler);
+    super(componentTarget, compiler, angularm);
   }
 
 
   public refreshContent() {
     super.refreshContent();
 
-    let widgetConnection = this.rule.getEntityWidget(this.entitytype, this.port);
-    let service = this.domain.getService(this.entitytype.singular);
-    service.listAll().then( entities => {
-      entities.forEach( entity => {
-      let componentRef = this.createComponent(widgetConnection.widget);
-      componentRef.instance.entity = entity;
-      componentRef.instance.configuration = (widgetConnection.configuration) ? widgetConnection.configuration : {};
-      });
+    this.foreachEntity(this.entitytype, (entity) => {
+      this.createEntityWidget(entity, this.port);
     });
   }
 

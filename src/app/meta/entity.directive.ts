@@ -1,10 +1,9 @@
 import { ViewContainerRef, Directive } from '@angular/core';
 import { ComponentFactoryResolver, Input, OnInit } from '@angular/core';
 
+import { AngularMService } from '../angular.m.service';
 import { AbstractPortDirective } from './abstract.port.directive';
 import { Entity } from './entity.type';
-import { RuleService } from '../widgets/rule.service';
-import { DomainService } from '../domain/domain.service';
 
 
 @Directive({
@@ -16,22 +15,18 @@ export class EntityDirective extends AbstractPortDirective implements OnInit {
   @Input() entity: Entity;
 
   constructor(
-    private domain: DomainService,
-    private rule: RuleService,
     componentTarget: ViewContainerRef,
-    compiler: ComponentFactoryResolver
+    compiler: ComponentFactoryResolver,
+    angularm: AngularMService
   ) {
-    super(componentTarget, compiler);
+    super(componentTarget, compiler, angularm);
   }
 
 
   public refreshContent() {
     super.refreshContent();
 
-    let widgetConnection = this.rule.getEntityWidget(this.entity.entityType, this.port);
-    let componentRef = this.createComponent(widgetConnection.widget);
-    componentRef.instance.entity = this.entity;
-    componentRef.instance.configuration = (widgetConnection.configuration) ? widgetConnection.configuration : {};
+    this.createEntityWidget(this.entity, this.port);
   }
 
 }

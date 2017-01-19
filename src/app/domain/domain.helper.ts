@@ -3,7 +3,9 @@ import { EntityType } from '../meta/entity.type';
 
 export class DomainServiceHelper {
 
-    constructor(private service: DomainService) {}
+
+    constructor(private service: DomainService) {
+    }
 
     checkService() {
         expect(this.service).toBeTruthy();

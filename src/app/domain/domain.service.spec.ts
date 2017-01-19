@@ -11,7 +11,7 @@ describe( 'Service: DomainService', () => {
     let service: DomainService;
 
     beforeEach( () => {
-        service = new DomainService(new ProductService(), new ClientService(), new AlunoService());
+        service = new DomainService();
         helper = new DomainServiceHelper(service);
     });
 

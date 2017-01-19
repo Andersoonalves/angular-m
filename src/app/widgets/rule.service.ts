@@ -1,4 +1,4 @@
-import { Injectable, Type } from '@angular/core';
+import { Type } from '@angular/core';
 
 import { EntityType, PropertyType, Property } from '../meta/entity.type';
 
@@ -29,7 +29,6 @@ export class WidgetConnection {
 }
 
 
-@Injectable()
 export class AbstractRuleService<T extends Rule> {
 
   protected rules: T[] = [];
@@ -70,7 +69,6 @@ class EntityTypeRule extends Rule {
 }
 
 
-@Injectable()
 export class EntityTypeRuleService extends AbstractRuleService<EntityTypeRule> {
 
   getWidget(entityType: EntityType, port: string): WidgetConnection {
@@ -113,7 +111,6 @@ class PropertyTypeRule extends Rule {
 }
 
 
-@Injectable()
 export class PropertyTypeRuleService extends AbstractRuleService<PropertyTypeRule> {
 
   getWidget(propertyType: PropertyType, port: string): WidgetConnection {
@@ -166,7 +163,6 @@ class PropertyRule extends Rule {
 }
 
 // TO DO this class is identical with PropertyTypeRuleService
-@Injectable()
 export class PropertyRuleService extends AbstractRuleService<PropertyRule> {
 
   getWidget(property: Property, port: string): WidgetConnection {
@@ -218,7 +214,6 @@ class EntityRule extends Rule {
 }
 
 // TO DO this class is identical with EntityTypeRuleService
-@Injectable()
 export class EntityRuleService extends AbstractRuleService<EntityRule> {
 
   getWidget(entityType: EntityType, port: string): WidgetConnection {
@@ -244,18 +239,19 @@ export class EntityRuleService extends AbstractRuleService<EntityRule> {
 }
 
 
-@Injectable()
 export class RuleService {
-  static serviceTypes(): any[] {
-    return [EntityTypeRuleService, PropertyTypeRuleService, PropertyRuleService, EntityRuleService];
-  }
 
-  constructor(
-    private entityTypeRuleService: EntityTypeRuleService,
-    private propertyTypeRuleService: PropertyTypeRuleService,
-    private propertyRuleService: PropertyRuleService,
-    private entityRuleService: EntityRuleService
-  ) { }
+  private entityTypeRuleService: EntityTypeRuleService;
+  private propertyTypeRuleService: PropertyTypeRuleService;
+  private propertyRuleService: PropertyRuleService;
+  private entityRuleService: EntityRuleService;
+
+  constructor() {
+    this.entityTypeRuleService = new EntityTypeRuleService();
+    this.propertyTypeRuleService = new PropertyTypeRuleService();
+    this.propertyRuleService = new PropertyRuleService();
+    this.entityRuleService = new EntityRuleService();
+   }
 
   addDefaultEntityTypeRule(port: string, component: Type<any>, configuration?: any) {
     this.addEntityTypeRule(port, DEFAULT_SCOPE, component, configuration);

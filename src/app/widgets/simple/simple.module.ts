@@ -4,8 +4,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { PlainTextComponent } from './plain';
-import { BoldTextComponent } from './bold';
 import { ThComponent } from './th';
 import { FormLineComponent } from './form.line';
 import { EditFormLineComponent } from './edit.form.line';
@@ -17,8 +15,6 @@ import { MetaModule } from '../../meta/meta.module';
 import { PipesModule } from '../../pipes/pipes.module';
 
 export const SIMPLE_WIDGETS_DIRECTIVES = [
-  forwardRef(() => PlainTextComponent),
-  forwardRef(() => BoldTextComponent),
   forwardRef(() => ThComponent),
   forwardRef(() => FormLineComponent),
   forwardRef(() => EditFormLineComponent),

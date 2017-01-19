@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { AngularMService } from '../../angular.m.service';
 import { EntityComponent } from '../../meta/entity.component';
 import { FlashMessageService } from '../flash.message.service';
-import { DomainService } from '../../domain/domain.service';
-
 import { TitleCase } from '../../pipes/titlecase.pipe';
 
 
@@ -18,8 +17,8 @@ import { TitleCase } from '../../pipes/titlecase.pipe';
 })
 export class EntityLineComponent extends EntityComponent {
 
-    constructor(private router: Router, private flash: FlashMessageService,
-            private domain: DomainService) {
+    constructor(private router: Router, private flash: FlashMessageService, 
+            private angularm: AngularMService) {
         super();
     }
 
@@ -37,7 +36,7 @@ export class EntityLineComponent extends EntityComponent {
 
     destroy() {
         if (confirm('Are you sure?')) {
-            this.domain.getService(this.entity.entityType.singular).delete(this.entity.key);
+            this.angularm.getService(this.entity.entityType.singular).delete(this.entity.key);
             let entityTypeName = TitleCase.toTitleCase(this.entity.entityType.singular);
             this.flash.changeMessage(`${entityTypeName} was successfully destroyed.`);
         }

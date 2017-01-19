@@ -4,7 +4,7 @@ import { PropertyType } from './entity.type';
 
 export abstract class PropertyTypeComponent {
 
-    public propertytype: PropertyType;
+    public propertyType: PropertyType;
     public mgFormControl: FormControl;
 
 };
