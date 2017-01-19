@@ -21,6 +21,10 @@ export class DomainService {
     private services: { [entityTypeName: string]: AbstractService; } = {};
 
 
+    static serviceTypes(): any[] {
+        return [ProductService, ClientService, AlunoService];
+    }
+
     constructor(
         private productService: ProductService,
         private clientService: ClientService,

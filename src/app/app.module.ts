@@ -7,7 +7,7 @@ import { FlashMessageComponent } from './widgets/flash.message.component';
 import { MetaModule } from './meta/meta.module';
 import { WidgetModule } from './widgets/widget.module';
 import { AppRoutingModule } from './app-routing.module';
-import { MetaRouterModule } from './widgets/router/metarouter.module';
+import { MetaRouterModule } from './metarouter.module';
 import { DomainModule } from './domain/domain.module';
 
 import { PipesModule } from './pipes/pipes.module';

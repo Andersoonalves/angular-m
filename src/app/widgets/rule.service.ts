@@ -25,7 +25,7 @@ export abstract class Rule {
 }
 
 export class WidgetConnection {
-  constructor(public widget: Type<any>, public configuration?: any) {}
+  constructor(public widget: Type<any>, public configuration?: any) { }
 }
 
 
@@ -99,7 +99,7 @@ export class EntityTypeRuleService extends AbstractRuleService<EntityTypeRule> {
 
 class PropertyTypeRule extends Rule {
   constructor(port: string, entitySelector: string, public propertySelector: string,
-      public propertyTypeTypeSelector: string, component: Type<any>, configuration?: any) {
+    public propertyTypeTypeSelector: string, component: Type<any>, configuration?: any) {
     super(port, entitySelector, component, configuration);
   };
 
@@ -125,14 +125,14 @@ export class PropertyTypeRuleService extends AbstractRuleService<PropertyTypeRul
       if (rule.port === port) {
         if (rule.propertyTypeTypeSelector) {
           if (this.matchExpression(propertyType.entityType.singular, rule.entitySelector)
-              && this.matchExpression(propertyType.name, rule.propertySelector)
-              && propertyType.type === rule.propertyTypeTypeSelector) {
+            && this.matchExpression(propertyType.name, rule.propertySelector)
+            && propertyType.type === rule.propertyTypeTypeSelector) {
             matchType = rule;
           }
         } else if (rule.hasDefaultScope()) {
           defaultScope = rule;
         } else if (this.matchExpression(propertyType.entityType.singular, rule.entitySelector)
-              && this.matchExpression(propertyType.name, rule.propertySelector)) {
+          && this.matchExpression(propertyType.name, rule.propertySelector)) {
           matchScope = rule;
         }
       }
@@ -140,9 +140,9 @@ export class PropertyTypeRuleService extends AbstractRuleService<PropertyTypeRul
 
     this.checkDefaultScope(defaultScope, port);
 
-    let matchRule =  (matchType) ? matchType
-                                 : (matchScope) ? matchScope
-                                                : defaultScope;
+    let matchRule = (matchType) ? matchType
+      : (matchScope) ? matchScope
+        : defaultScope;
 
     return new WidgetConnection(matchRule.component, matchRule.configuration);
   }
@@ -152,7 +152,7 @@ export class PropertyTypeRuleService extends AbstractRuleService<PropertyTypeRul
 // TO DO this class is identical with PropertyTypeRule
 class PropertyRule extends Rule {
   constructor(port: string, entitySelector: string, public propertySelector: string,
-      public propertyTypeTypeSelector: string, component: Type<any>, configuration?: any) {
+    public propertyTypeTypeSelector: string, component: Type<any>, configuration?: any) {
     super(port, entitySelector, component, configuration);
   };
 
@@ -178,14 +178,14 @@ export class PropertyRuleService extends AbstractRuleService<PropertyRule> {
       if (rule.port === port) {
         if (rule.propertyTypeTypeSelector) {
           if (this.matchExpression(property.propertyType.entityType.singular, rule.entitySelector)
-              && this.matchExpression(property.propertyType.name, rule.propertySelector)
-              && property.propertyType.type === rule.propertyTypeTypeSelector) {
+            && this.matchExpression(property.propertyType.name, rule.propertySelector)
+            && property.propertyType.type === rule.propertyTypeTypeSelector) {
             matchType = rule;
           }
         } else if (rule.hasDefaultScope()) {
           defaultScope = rule;
         } else if (this.matchExpression(property.propertyType.entityType.singular, rule.entitySelector)
-              && this.matchExpression(property.propertyType.name, rule.propertySelector)) {
+          && this.matchExpression(property.propertyType.name, rule.propertySelector)) {
           matchScope = rule;
         }
       }
@@ -193,9 +193,9 @@ export class PropertyRuleService extends AbstractRuleService<PropertyRule> {
 
     this.checkDefaultScope(defaultScope, port);
 
-    let matchRule =  (matchType) ? matchType
-                                 : (matchScope) ? matchScope
-                                                : defaultScope;
+    let matchRule = (matchType) ? matchType
+      : (matchScope) ? matchScope
+        : defaultScope;
 
     return new WidgetConnection(matchRule.component, matchRule.configuration);
   }
@@ -246,6 +246,9 @@ export class EntityRuleService extends AbstractRuleService<EntityRule> {
 
 @Injectable()
 export class RuleService {
+  static serviceTypes(): any[] {
+    return [EntityTypeRuleService, PropertyTypeRuleService, PropertyRuleService, EntityRuleService];
+  }
 
   constructor(
     private entityTypeRuleService: EntityTypeRuleService,
@@ -272,7 +275,7 @@ export class RuleService {
   }
 
   addPropertyTypeRule(port: string, entitySelector: string, propertySelector: string,
-      propertyTypeTypeSelector: string, component: Type<any>, configuration?: any) {
+    propertyTypeTypeSelector: string, component: Type<any>, configuration?: any) {
     let rule = new PropertyTypeRule(port, entitySelector, propertySelector, propertyTypeTypeSelector, component, configuration);
     this.propertyTypeRuleService.addRule(rule);
   }
@@ -286,7 +289,7 @@ export class RuleService {
   }
 
   addPropertyRule(port: string, entitySelector: string, propertySelector: string,
-      propertyTypeTypeSelector: string, component: Type<any>, configuration?: any) {
+    propertyTypeTypeSelector: string, component: Type<any>, configuration?: any) {
     let rule = new PropertyTypeRule(port, entitySelector, propertySelector, propertyTypeTypeSelector, component, configuration);
     this.propertyRuleService.addRule(rule);
   }

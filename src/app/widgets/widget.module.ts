@@ -2,10 +2,10 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { SimpleModule, SIMPLE_WIDGETS_DIRECTIVES } from './simple/simple.module';
-import { MetaRouterModule } from './router/metarouter.module';
+import { MetaRouterModule } from '../metarouter.module';
 
 // TODO declare this dependency in just one file
-import { EntityTypeRouterComponent } from './router/entitytype.router';
+import { EntityTypeRouterComponent } from '../entitytype.router';
 import { ListEntitiesComponent } from './list.entities.component';
 import { ShowEntityComponent } from './show.entity.component';
 import { CreateEntityComponent } from './create.entity.component';

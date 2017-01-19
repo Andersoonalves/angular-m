@@ -2,7 +2,7 @@ import { Injectable, Type } from '@angular/core';
 
 import { RuleService } from './rule.service';
 
-import { EntityTypeRouterComponent } from './router/entitytype.router';
+import { EntityTypeRouterComponent } from '../entitytype.router';
 import { ThComponent } from './simple/th';
 import { FormLineComponent } from './simple/form.line';
 import { EditFormLineComponent } from './simple/edit.form.line';

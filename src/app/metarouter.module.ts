@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
 import { EntityTypeRouterComponent } from './entitytype.router';
-import { MetaModule } from '../../meta/meta.module';
+import { MetaModule } from './meta/meta.module';
 
 export const META_ROUTER_DIRECTIVES = [
   forwardRef(() => EntityTypeRouterComponent)
