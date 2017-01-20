@@ -1,4 +1,3 @@
-import { EntityTypeComponent } from './meta/entitytype.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -15,19 +14,16 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { PipesModule } from './pipes/pipes.module';
 import { FlashMessageService } from './widgets/flash.message.service';
-import { EntityTypeRouterComponent } from './entitytype.router';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FlashMessageComponent,
-    EntityTypeRouterComponent
+    FlashMessageComponent
   ],
   imports: [
     CommonModule,
     FormsModule,
     RouterModule,
-    MetaModule,
     BrowserModule,
     HttpModule,
     MetaModule,
@@ -42,13 +38,10 @@ import { EntityTypeRouterComponent } from './entitytype.router';
   exports: [
     CommonModule,
     FormsModule,
-    EntityTypeRouterComponent,
     PipesModule,
     FlashMessageComponent
   ],
-  schemas: [
-    EntityTypeComponent
-  ],
+  schemas: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

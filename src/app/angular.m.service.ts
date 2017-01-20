@@ -1,19 +1,19 @@
 import { Injectable, Type } from '@angular/core';
 
-import { DomainService } from './domain/domain.service';
+import { DomainLayer } from './domain/domain.layer';
 import { RuleService, WidgetConnection } from './widgets/rule.service';
 import { EntityType, PropertyType, Entity, Property } from './meta/entity.type';
-import { AbstractService } from './meta/abstract.service';
+import { AbstractDAO } from './domain/abstract.dao';
 
 
 @Injectable()
 export class AngularMService {
 
-    private domain: DomainService;
+    private domain: DomainLayer;
     private rule: RuleService;
 
     constructor() {
-        this.domain = new DomainService();
+        this.domain = new DomainLayer();
         this.rule = new RuleService();
     }
 
@@ -21,7 +21,11 @@ export class AngularMService {
         return this.domain.listEntityTypes();
     }
 
-    getService(entitytype: string): AbstractService {
+    addService(service: AbstractDAO) {
+        this.domain.addService(service);
+    }
+
+    getService(entitytype: string): AbstractDAO {
         return this.domain.getService(entitytype);
     }
 

@@ -1,23 +1,20 @@
-import { DomainService } from './domain.service';
-import { DomainServiceHelper } from './domain.helper';
-import { ProductService} from './product.service';
-import { ClientService} from './client.service';
-import { AlunoService} from './aluno.service';
+import { DomainLayer } from './domain.layer';
+import { DomainLayerHelper } from './domain.helper';
 import { EntityType } from '../meta/entity.type';
 
-describe( 'Service: DomainService', () => {
+describe( 'Layer: DomainLayer', () => {
 
-    let helper: DomainServiceHelper;
-    let service: DomainService;
+    let helper: DomainLayerHelper;
+    let service: DomainLayer;
 
     beforeEach( () => {
-        service = new DomainService();
-        helper = new DomainServiceHelper(service);
+        service = new DomainLayer();
+        helper = new DomainLayerHelper(service);
     });
 
     it( 'Initial entities', () => {
         helper.checkService();
-        helper.checkEntityTypes(3, 'products', 'clients', 'alunos');
+        helper.checkEntityTypes(0);
     });
 
     it( 'Add entities', () => {
@@ -30,7 +27,7 @@ describe( 'Service: DomainService', () => {
             .property('birthdate', 'date'));
 
         helper.checkService();
-        helper.checkEntityTypes(5, 'products', 'clients', 'alunos', 'cars', 'Customers');
+        helper.checkEntityTypes(2, 'cars', 'Customers');
     });
 
     it( 'Tags', () => {
@@ -45,7 +42,7 @@ describe( 'Service: DomainService', () => {
             .property('birthdate', 'date'));
 
         helper.checkService();
-        helper.checkEntityTypes(5, 'products', 'clients', 'alunos', 'cars', 'Customers');
+        helper.checkEntityTypes(2, 'cars', 'Customers');
 
         helper.checkEntityType('cars', carTags);
         helper.checkEntityType('Customers', customerTags);

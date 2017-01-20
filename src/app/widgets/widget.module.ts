@@ -11,7 +11,6 @@ import { CreateEntityComponent } from './create.entity.component';
 import { EditEntityComponent } from './edit.entity.component';
 
 
-import { WidgetService } from './widget.service';
 import { MetaModule } from '../meta/meta.module';
 import { PipesModule } from '../pipes/pipes.module';
 
@@ -22,9 +21,7 @@ import { PipesModule } from '../pipes/pipes.module';
         RouterModule,
         PipesModule
     ],
-    providers: [
-        WidgetService
-    ],
+    providers: [],
     declarations: [
         ListEntitiesComponent,
         ShowEntityComponent,
