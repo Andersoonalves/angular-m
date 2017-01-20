@@ -1,3 +1,7 @@
+export let et = (singular: string, plural: string, tags: any): EntityType => {
+    return new EntityType(singular, plural, tags);
+}
+
 export class EntityType {
 
     propertyTypes: PropertyType [] = [];
@@ -8,7 +12,7 @@ export class EntityType {
         }
     }
 
-    property(name: string, type: string): EntityType {
+    pt(name: string, type: string): EntityType {
         this.propertyTypes.push(new PropertyType(this, name, type));
         return this;
     }

@@ -29,11 +29,7 @@ export class AppComponent {
   }
 
   loadEntityTypeConfiguration() {
-    ENTITY_TYPE_CONFIGURATION.forEach((jsonEntity: any) => {
-      let entityType = new EntityType(jsonEntity.singular, jsonEntity.plural, jsonEntity.tags);
-      jsonEntity.properties.forEach((jsonProperty: any) => {
-        entityType.property(jsonProperty.name, jsonProperty.type);
-      });
+    ENTITY_TYPE_CONFIGURATION.forEach((entityType: EntityType) => {
       this.angularm.addService(new InMemoryDAO(entityType));
 
     });

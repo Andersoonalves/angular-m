@@ -1,4 +1,17 @@
+import { et } from './meta/entity.type';
+
+
 export const ENTITY_TYPE_CONFIGURATION: any[] =
+[
+    et('aluno', 'alunos', { id: 'nome' } )
+        .pt('nome', 'string')
+        .pt('matricula', 'number'),
+    et('client', 'clients', { id: 'id' } )
+        .pt('id', 'number')
+        .pt('name', 'string')    
+]
+
+export const ENTITY_TYPE_CONFIGURATION2: any[] =
 [
     {
         'singular': 'aluno',
