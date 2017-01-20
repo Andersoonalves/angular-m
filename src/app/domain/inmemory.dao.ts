@@ -51,3 +51,7 @@ export class InMemoryDAO extends AbstractDAO {
     }
 
 }
+
+export let mem = (entityType: EntityType): InMemoryDAO => {
+    return new InMemoryDAO(entityType);
+};

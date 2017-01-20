@@ -2,9 +2,8 @@ import { Injectable, Type } from '@angular/core';
 
 import { DomainLayer } from './domain/domain.layer';
 import { RuleService, WidgetConnection } from './widgets/rule.service';
-import { EntityType, PropertyType, Entity, Property } from './meta/entity.type';
+import { EntityType, PropertyType, Property } from './meta/entity.type';
 import { AbstractDAO } from './domain/abstract.dao';
-import { InMemoryDAO } from './domain/inmemory.dao';
 
 
 @Injectable()
@@ -18,10 +17,9 @@ export class AngularMService {
         this.rule = new RuleService();
     }
 
-    describeDomain(... entityTypes: EntityType[]) {
-        entityTypes.forEach((entityType: EntityType) => {
-            this.addService(new InMemoryDAO(entityType));
-
+    setupDomain(... daos: AbstractDAO[]) {
+        daos.forEach((dao: AbstractDAO) => {
+            this.addService(dao);
         });
     }
 
