@@ -8,14 +8,15 @@ export class EntityType {
         }
     }
 
-    property(name: string, type: string): EntityType {
+    pt(name: string, type: string): EntityType {
         this.propertyTypes.push(new PropertyType(this, name, type));
         return this;
     }
 
-    get properties(): PropertyType [] {
+    get properties(): PropertyType[] {
         return this.propertyTypes;
     }
+
 }
 
 export class PropertyType {

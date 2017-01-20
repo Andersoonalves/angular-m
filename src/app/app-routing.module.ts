@@ -6,7 +6,7 @@ import { ListEntitiesComponent } from './widgets/list.entities.component';
 import { ShowEntityComponent } from './widgets/show.entity.component';
 import { CreateEntityComponent } from './widgets/create.entity.component';
 import { EditEntityComponent } from './widgets/edit.entity.component';
-import { HomeComponent } from './widgets/router/home.component';
+import { HomeComponent } from './home.component';
 import { PageNotFoundComponent } from './not-found.component';
 import { WidgetModule } from './widgets/widget.module';
 

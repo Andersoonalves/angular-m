@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { AngularMService } from './angular.m.service';
 
-import { WidgetService } from './widgets/widget.service';
+import { describeDomain } from './entities';
+import { defineRules } from './rules';
 
 @Component({
   selector: 'mg-root',
@@ -9,5 +11,11 @@ import { WidgetService } from './widgets/widget.service';
 })
 export class AppComponent {
 
-  constructor(widgetService: WidgetService) { }
+  constructor(
+    private angularm: AngularMService
+  ) {
+    describeDomain(this.angularm);
+    defineRules(this.angularm);
+  }
+
 }

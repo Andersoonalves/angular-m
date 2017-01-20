@@ -5,11 +5,11 @@ import { PropertyTypeComponent } from '../../meta/propertytype.component';
 @Component({
     selector: 'mg-form-line',
     template:
-        `<label for="{{propertytype.entityType.singular}}_{{propertytype.name}}">{{propertytype.name | titleCase}}</label>
+        `<label for="{{propertyType.entityType.singular}}_{{propertyType.name}}">{{propertyType.name | titleCase}}</label>
         <input 
             type="{{configuration.inputType}}"
-            id="{{propertytype.entityType.singular}}_{{propertytype.name}}" 
-            placeholder="{{propertytype.name | titleCase}}"
+            id="{{propertyType.entityType.singular}}_{{propertyType.name}}" 
+            placeholder="{{propertyType.name | titleCase}}"
             [formControl]="mgFormControl"
             ngModel>
         <br>`,

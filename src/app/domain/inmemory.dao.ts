@@ -1,10 +1,14 @@
-import { AbstractService } from './abstract.service';
-import { EntityType, Entity } from './entity.type';
+import { AbstractDAO } from './abstract.dao';
+import { EntityType, Entity } from '../meta/entity.type';
 import { TitleCase } from '../pipes/titlecase.pipe';
 
-export abstract class InMemoryService extends AbstractService {
+export class InMemoryDAO extends AbstractDAO {
 
     protected data: any[] = [];
+
+    constructor(public entityType: EntityType) {
+        super(entityType);
+    }
 
 
     listAll() {
@@ -12,7 +16,7 @@ export abstract class InMemoryService extends AbstractService {
     }
 
     findUnique(id: number | string) {
-        let entityType: EntityType = this.describeEntityType();
+        let entityType: EntityType = this.entityType;
         let idPropertyType: string = entityType.tags.id;
         return this.listAll()
             .then(items => items.find(item => {
@@ -21,12 +25,12 @@ export abstract class InMemoryService extends AbstractService {
     }
 
     create(properties: Entity) {
-        let entity = new Entity(this.describeEntityType(), properties);
+        let entity = new Entity(this.entityType, properties);
         this.data.push(entity);
     }
 
     edit(key: any, properties: Entity) {
-        let entity = new Entity(this.describeEntityType(), properties);
+        let entity = new Entity(this.entityType, properties);
         this.findUnique(key).then(
             oldEntity => oldEntity.properties = entity.properties
         );
@@ -41,9 +45,13 @@ export abstract class InMemoryService extends AbstractService {
             }
         }
 
-        let entityType: EntityType = this.describeEntityType();
+        let entityType: EntityType = this.entityType;
         let entityTypeName = TitleCase.toTitleCase(entityType.singular);
         throw `${entityTypeName} ${key} not found`;
     }
 
 }
+
+export let mem = (entityType: EntityType): InMemoryDAO => {
+    return new InMemoryDAO(entityType);
+};

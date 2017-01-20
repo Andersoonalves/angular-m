@@ -1,18 +1,21 @@
+import { AngularMPage } from '../../../e2e/app.po';
 import { ViewContainerRef, Directive } from '@angular/core';
 import { ComponentFactoryResolver, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 import { AngularMService } from '../angular.m.service';
 import { AbstractPortDirective } from './abstract.port.directive';
-import { EntityType } from './entity.type';
+import { PropertyType } from './entity.type';
 
 
 @Directive({
-  selector: '[mgForeachEntity]'
+  selector: '[mgPropertyType]'
 })
-export class ForeachEntityDirective extends AbstractPortDirective implements OnInit {
+export class PropertyTypeDirective extends AbstractPortDirective implements OnInit {
 
-  @Input('mgForeachEntity') port: string;
-  @Input() entitytype: EntityType;
+  @Input('mgPropertyType') port: string;
+  @Input() propertyType: PropertyType;
+  @Input() mgForm: FormGroup;
 
   constructor(
     componentTarget: ViewContainerRef,
@@ -26,9 +29,7 @@ export class ForeachEntityDirective extends AbstractPortDirective implements OnI
   public refreshContent() {
     super.refreshContent();
 
-    this.foreachEntity(this.entitytype, (entity) => {
-      this.createEntityWidget(entity, this.port);
-    });
+    this.createPropertyTypeWidget(this.propertyType, this.port, this.mgForm);
   }
 
 }

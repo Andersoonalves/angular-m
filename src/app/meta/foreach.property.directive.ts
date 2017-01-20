@@ -2,10 +2,9 @@ import { ViewContainerRef, Directive } from '@angular/core';
 import { ComponentFactoryResolver, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
+import { AngularMService } from '../angular.m.service';
 import { AbstractPortDirective } from './abstract.port.directive';
 import { Entity, Property } from './entity.type';
-import { RuleService } from '../widgets/rule.service';
-import { DomainService } from '../domain/domain.service';
 
 
 @Directive({
@@ -18,27 +17,19 @@ export class ForeachPropertyDirective extends AbstractPortDirective implements O
   @Input() mgForm: FormGroup;
 
   constructor(
-    private domain: DomainService,
-    private rule: RuleService,
     componentTarget: ViewContainerRef,
-    compiler: ComponentFactoryResolver
+    compiler: ComponentFactoryResolver,
+    angularm: AngularMService
   ) {
-    super(componentTarget, compiler);
+    super(componentTarget, compiler, angularm);
   }
 
 
   public refreshContent() {
     super.refreshContent();
 
-    this.entity.entityType.propertyTypes.forEach((propertyType) => {
-      let property = new Property(this.entity, propertyType, this.entity.properties[propertyType.name]);
-      let widgetConnection = this.rule.getPropertyWidget(property, this.port);
-      let componentRef = this.createComponent(widgetConnection.widget);
-      componentRef.instance.property = property;
-      componentRef.instance.configuration = (widgetConnection.configuration) ? widgetConnection.configuration : {};
-      if (this.mgForm) {
-        componentRef.instance.mgFormControl = this.mgForm.controls[property.propertyType.name];
-      }
+    this.foreachProperty(this.entity, (property) => {
+      this.createPropertyWidget(property, this.port, this.mgForm);
     });
   }
 

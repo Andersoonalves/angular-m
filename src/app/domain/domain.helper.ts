@@ -1,9 +1,11 @@
-import { DomainService } from './domain.service';
+import { DomainLayer } from './domain.layer';
 import { EntityType } from '../meta/entity.type';
 
-export class DomainServiceHelper {
+export class DomainLayerHelper {
 
-    constructor(private service: DomainService) {}
+
+    constructor(private service: DomainLayer) {
+    }
 
     checkService() {
         expect(this.service).toBeTruthy();

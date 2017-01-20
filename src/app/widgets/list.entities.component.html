@@ -3,7 +3,9 @@
   <table>
     <thead>
       <tr>
-      <div [mgForeachPropertyType]="'table_head'" [entityType]="entityType"></div>
+      <div 
+        *ngFor="let propertyType of entityType.propertyTypes" 
+        [mgPropertyType]="'table_head'" [propertyType]="propertyType"></div>
       <th colspan="3"></th>
       </tr>
     </thead>

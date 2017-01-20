@@ -1,4 +1,3 @@
-import { DomainService } from '../domain/domain.service';
 import { RuleService, EntityTypeRuleService, PropertyTypeRuleService, PropertyRuleService } from './rule.service';
 import { EntityType } from '../meta/entity.type';
 import { PlainTextComponent } from './simple/plain';
@@ -10,8 +9,7 @@ describe( 'Service: MetadataService', () => {
     let fakeTags = { id: 'id' };
 
     beforeEach( () => {
-        service = new RuleService(
-            new EntityTypeRuleService(), new PropertyTypeRuleService(), new PropertyRuleService());
+        service = new RuleService();
     });
 
     it( 'Add rules', () => {

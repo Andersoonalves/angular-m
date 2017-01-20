@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 
-import { EntityType } from './entity.type';
+import { EntityType } from '../meta/entity.type';
 
-@Injectable()
-export abstract class AbstractService {
+export abstract class AbstractDAO {
+
+    constructor(public entityType: EntityType) {}
 
     abstract listAll(): Promise<any[]>;
-    abstract findUnique(id: number | string): Promise<any>;
 
-    abstract describeEntityType(): EntityType;
+    abstract findUnique(id: number | string): Promise<any>;
 
     abstract create(properties: any);
 

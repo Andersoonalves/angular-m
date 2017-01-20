@@ -3,14 +3,11 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
+import { AngularMService } from '../angular.m.service';
 import { FlashMessageService } from './flash.message.service';
-
 import { slideInDownAnimation } from '../animations';
-
 import { EntityType } from '../meta/entity.type';
 import { EntityTypeComponent } from '../meta/entitytype.component';
-import { DomainService } from '../domain/domain.service';
-
 import { TitleCase } from '../pipes/titlecase.pipe';
 
 @Component({
@@ -27,9 +24,9 @@ export class CreateEntityComponent extends EntityTypeComponent implements OnInit
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private domain: DomainService,
     private fb: FormBuilder,
-    private flash: FlashMessageService
+    private flash: FlashMessageService,
+    private angularm: AngularMService
   ) {
     super();
   }
@@ -46,7 +43,7 @@ export class CreateEntityComponent extends EntityTypeComponent implements OnInit
   }
 
   mapEntityTypeParam(params: Params): Promise<EntityType> {
-    return this.domain.findEntityType(params['entitytypename']);
+    return this.angularm.findEntityType(params['entitytypename']);
   }
 
   ngOnInit() {
@@ -56,7 +53,7 @@ export class CreateEntityComponent extends EntityTypeComponent implements OnInit
   }
 
   onSubmit(form: any): void {
-    this.domain.getService(this.entityType.singular).create(form);
+    this.angularm.getService(this.entityType.singular).create(form);
     let entityTypeName = TitleCase.toTitleCase(this.entityType.singular);
     this.flash.changeMessage(`${entityTypeName} was successfully created.`);
     this.router.navigate([this.entityType.plural, form[this.entityType.tags.id] ]);

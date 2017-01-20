@@ -1,11 +1,11 @@
+import { AngularMPage } from '../../../e2e/app.po';
 import { ViewContainerRef, Directive } from '@angular/core';
 import { ComponentFactoryResolver, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
+import { AngularMService } from '../angular.m.service';
 import { AbstractPortDirective } from './abstract.port.directive';
 import { EntityType } from './entity.type';
-import { RuleService } from '../widgets/rule.service';
-import { DomainService } from '../domain/domain.service';
 
 
 @Directive({
@@ -18,26 +18,19 @@ export class ForeachPropertyTypeDirective extends AbstractPortDirective implemen
   @Input() mgForm: FormGroup;
 
   constructor(
-    private domain: DomainService,
-    private rule: RuleService,
     componentTarget: ViewContainerRef,
-    compiler: ComponentFactoryResolver
+    compiler: ComponentFactoryResolver,
+    angularm: AngularMService
   ) {
-    super(componentTarget, compiler);
+    super(componentTarget, compiler, angularm);
   }
 
 
   public refreshContent() {
     super.refreshContent();
 
-    this.entityType.propertyTypes.forEach((propertytype) => {
-      let widgetConnection = this.rule.getPropertyTypeWidget(propertytype, this.port);
-      let componentRef = this.createComponent(widgetConnection.widget);
-      componentRef.instance.propertytype = propertytype;
-      componentRef.instance.configuration = (widgetConnection.configuration) ? widgetConnection.configuration : {};
-      if (this.mgForm) {
-        componentRef.instance.mgFormControl = this.mgForm.controls[propertytype.name];
-      }
+    this.foreachPropertyType(this.entityType, (propertyType) => {
+      this.createPropertyTypeWidget(propertyType, this.port, this.mgForm);
     });
   }
 
