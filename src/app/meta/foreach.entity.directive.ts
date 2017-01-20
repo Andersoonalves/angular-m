@@ -16,7 +16,7 @@ export class ForeachEntityDirective extends AbstractPortDirective implements OnI
 
   constructor(
     componentTarget: ViewContainerRef,
-    compiler: ComponentFactoryResolver, 
+    compiler: ComponentFactoryResolver,
     angularm: AngularMService
   ) {
     super(componentTarget, compiler, angularm);

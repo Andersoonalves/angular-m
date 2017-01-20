@@ -19,12 +19,12 @@ describe( 'Layer: DomainLayer', () => {
 
     it( 'Add entities', () => {
         service.addEntityType(new EntityType('Car', 'cars', {id: 'description'})
-            .property('description', 'string')
-            .property('price', 'number'));
+            .pt('description', 'string')
+            .pt('price', 'number'));
 
         service.addEntityType(new EntityType('Customer', 'Customers', {id: 'name'})
-            .property('name', 'string')
-            .property('birthdate', 'date'));
+            .pt('name', 'string')
+            .pt('birthdate', 'date'));
 
         helper.checkService();
         helper.checkEntityTypes(2, 'cars', 'Customers');
@@ -33,13 +33,13 @@ describe( 'Layer: DomainLayer', () => {
     it( 'Tags', () => {
         let carTags = {id: 'description', tag1: 'abc'};
         service.addEntityType(new EntityType('Car', 'cars', carTags)
-            .property('description', 'string')
-            .property('price', 'number'));
+            .pt('description', 'string')
+            .pt('price', 'number'));
 
         let customerTags = {id: 'name', tag1: 'abc'};
         service.addEntityType(new EntityType('Customer', 'Customers', customerTags)
-            .property('name', 'string')
-            .property('birthdate', 'date'));
+            .pt('name', 'string')
+            .pt('birthdate', 'date'));
 
         helper.checkService();
         helper.checkEntityTypes(2, 'cars', 'Customers');

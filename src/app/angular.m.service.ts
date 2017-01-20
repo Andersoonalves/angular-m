@@ -4,6 +4,7 @@ import { DomainLayer } from './domain/domain.layer';
 import { RuleService, WidgetConnection } from './widgets/rule.service';
 import { EntityType, PropertyType, Entity, Property } from './meta/entity.type';
 import { AbstractDAO } from './domain/abstract.dao';
+import { InMemoryDAO } from './domain/inmemory.dao';
 
 
 @Injectable()
@@ -15,6 +16,13 @@ export class AngularMService {
     constructor() {
         this.domain = new DomainLayer();
         this.rule = new RuleService();
+    }
+
+    describeDomain(... entityTypes: EntityType[]) {
+        entityTypes.forEach((entityType: EntityType) => {
+            this.addService(new InMemoryDAO(entityType));
+
+        });
     }
 
     listEntityTypes(): EntityType[] {
@@ -49,39 +57,51 @@ export class AngularMService {
         return this.rule.getEntityWidget(entityType, port);
     }
 
-    addDefaultEntityTypeRule(port: string, component: Type<any>, configuration?: any) {
+    detr(port: string, component: Type<any>, configuration?: any): AngularMService {
         this.rule.addDefaultEntityTypeRule(port, component, configuration);
+        return this;
     }
 
-    addEntityTypeRule(port: string, entitySelector: string, component: Type<any>, configuration?: any) {
+    etr(port: string, entitySelector: string, component: Type<any>, configuration?: any): AngularMService {
         this.rule.addEntityTypeRule(port, entitySelector, component, configuration);
+        return this;
     }
 
-    addDefaultPropertyTypeRule(port: string, component: Type<any>, configuration?: any) {
+    dptr(port: string, component: Type<any>, configuration?: any): AngularMService {
         this.rule.addDefaultPropertyTypeRule(port, component, configuration);
+        return this;
     }
 
-    addPropertyTypeRule(port: string, entitySelector: string, propertySelector: string,
-        propertyTypeTypeSelector: string, component: Type<any>, configuration?: any) {
+    ptr(port: string, entitySelector: string, propertySelector: string,
+        propertyTypeTypeSelector: string, component: Type<any>, configuration?: any): AngularMService {
         this.rule.addPropertyTypeRule(
             port, entitySelector, propertySelector, propertyTypeTypeSelector, component, configuration);
+        return this;
     }
 
-    addDefaultPropertyRule(port: string, component: Type<any>, configuration?: any) {
+    dpr(port: string, component: Type<any>, configuration?: any): AngularMService {
         this.rule.addDefaultPropertyRule(port, component, configuration);
+        return this;
     }
 
-    addPropertyRule(port: string, entitySelector: string, propertySelector: string,
-        propertyTypeTypeSelector: string, component: Type<any>, configuration?: any) {
+    pr(port: string, entitySelector: string, propertySelector: string,
+        propertyTypeTypeSelector: string, component: Type<any>, configuration?: any): AngularMService {
         this.rule.addPropertyRule(port, entitySelector, propertySelector, propertyTypeTypeSelector, component, configuration);
+        return this;
     }
 
-    addDefaultEntityRule(port: string, component: Type<any>, configuration?: any) {
+    der(port: string, component: Type<any>, configuration?: any): AngularMService {
         this.rule.addDefaultEntityRule(port, component, configuration);
+        return this;
     }
 
-    addEntityRule(port: string, entitySelector: string, component: Type<any>, configuration?: any) {
+    er(port: string, entitySelector: string, component: Type<any>, configuration?: any): AngularMService {
         this.rule.addEntityRule(port, entitySelector, component, configuration);
+        return this;
     }
 
 }
+
+export let et = (singular: string, plural: string, tags?: any, ... propertyTypes: PropertyType[]): EntityType => {
+    return new EntityType(singular, plural, tags);
+};

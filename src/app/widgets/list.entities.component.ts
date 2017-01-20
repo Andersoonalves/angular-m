@@ -27,7 +27,7 @@ export class ListEntitiesComponent extends EntityTypeComponent implements OnInit
     super();
   }
 
-  ngOnInit() { 
+  ngOnInit() {
     this.route.params
       .switchMap(
       (params: Params) =>

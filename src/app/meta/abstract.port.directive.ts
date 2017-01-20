@@ -14,7 +14,7 @@ export class AbstractPortDirective implements AfterViewInit, OnChanges, OnDestro
 
   constructor(
     private componentTarget: ViewContainerRef,
-    private compiler: ComponentFactoryResolver, 
+    private compiler: ComponentFactoryResolver,
     private angularm: AngularMService
   ) {}
 
@@ -24,7 +24,7 @@ export class AbstractPortDirective implements AfterViewInit, OnChanges, OnDestro
     });
   }
 
-  protected foreachPropertyType(entityType:EntityType, cb: (propertyType: PropertyType) => void ) {
+  protected foreachPropertyType(entityType: EntityType, cb: (propertyType: PropertyType) => void ) {
     entityType.propertyTypes.forEach((propertyType) => {
       cb(propertyType);
     });
@@ -39,7 +39,7 @@ export class AbstractPortDirective implements AfterViewInit, OnChanges, OnDestro
     });
   }
 
-  protected foreachProperty(entity:Entity, cb: (property: Property) => void ) {
+  protected foreachProperty(entity: Entity, cb: (property: Property) => void ) {
     entity.entityType.propertyTypes.forEach((propertyType) => {
       let property = new Property(entity, propertyType, entity.properties[propertyType.name]);
       cb(property);
@@ -50,7 +50,7 @@ export class AbstractPortDirective implements AfterViewInit, OnChanges, OnDestro
       let widgetConnection = this.angularm.getEntityTypeWidget(entityType, port);
       let componentRef = this.createComponent(widgetConnection.widget);
       componentRef.instance.entitytype = entityType;
-      componentRef.instance.configuration = (widgetConnection.configuration) ? widgetConnection.configuration : {};    
+      componentRef.instance.configuration = (widgetConnection.configuration) ? widgetConnection.configuration : {};
   }
 
   protected createPropertyTypeWidget(propertyType, port, mgForm: FormGroup) {

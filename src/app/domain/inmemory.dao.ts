@@ -5,7 +5,7 @@ import { TitleCase } from '../pipes/titlecase.pipe';
 export class InMemoryDAO extends AbstractDAO {
 
     protected data: any[] = [];
-    
+
     constructor(public entityType: EntityType) {
         super(entityType);
     }

@@ -7,7 +7,7 @@ export abstract class AbstractDAO {
     constructor(public entityType: EntityType) {}
 
     abstract listAll(): Promise<any[]>;
-    
+
     abstract findUnique(id: number | string): Promise<any>;
 
     abstract create(properties: any);

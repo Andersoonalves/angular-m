@@ -11,7 +11,6 @@ import { FlashMessageComponent } from './widgets/flash.message.component';
 import { MetaModule } from './meta/meta.module';
 import { WidgetModule } from './widgets/widget.module';
 import { AppRoutingModule } from './app-routing.module';
-
 import { PipesModule } from './pipes/pipes.module';
 import { FlashMessageService } from './widgets/flash.message.service';
 
