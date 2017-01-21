@@ -1,6 +1,6 @@
 export class EntityType {
 
-    propertyTypes: PropertyType [] = [];
+    propertyTypes: PropertyType[] = [];
 
     constructor(public singular: string, public plural: string, public tags: any) {
         if (!tags.id) {
@@ -20,7 +20,7 @@ export class EntityType {
 }
 
 export class PropertyType {
-    constructor(public entityType: EntityType, public name: string, public type: string, public tags?: any) {}
+    constructor(public entityType: EntityType, public name: string, public type: string, public tags?: any) { }
 }
 
 export class Entity {
@@ -32,8 +32,16 @@ export class Entity {
         return this.properties[keyName];
     }
 
+    mountProperties(): Property[] {
+        let result: Property[] = [];
+        this.entityType.propertyTypes.forEach((propertyType) => {
+            result.push(new Property(this, propertyType, this.properties[propertyType.name]));
+        });
+        return result;
+    }
+
 }
 
 export class Property {
-    constructor(public entity: Entity, public propertyType: PropertyType, public value: any) {}
+    constructor(public entity: Entity, public propertyType: PropertyType, public value: any) { }
 }
