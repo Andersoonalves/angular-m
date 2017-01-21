@@ -10,7 +10,9 @@ import { TitleCase } from '../../pipes/titlecase.pipe';
 @Component({
     selector: 'tr [mgEntityLine]',
     template:
-        `<div [mgForeachProperty]="'table_cell'" [entity]="entity"></div>
+        `<div 
+            *ngFor="let property of entity.mountProperties()" 
+            [mgProperty]="'table_cell'" [property]="property"></div>
          <td> <a href="#" (click)="show()">Show</a></td>
          <td> <a href="#" (click)="edit()">Edit</a></td>
          <td> <a href="#" (click)="destroy()">Destroy</a></td>`,

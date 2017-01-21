@@ -5,8 +5,9 @@
           (ngSubmit)="onSubmit(myForm.value)">
 
     <div 
-      [mgForeachPropertyType]="'form_line'" 
-      [entityType]="entityType" 
+      *ngFor="let propertyType of entityType.propertyTypes" 
+      [mgPropertyType]="'form_line'" 
+      [propertyType]="propertyType" 
       [mgForm]="myForm"></div>
 
     <input type="submit" value="Create {{ entityType.singular | titleCase }}">
