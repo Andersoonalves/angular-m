@@ -12,11 +12,11 @@ import { EntityDirective } from './entity.directive';
 export const META_DIRECTIVES = [
   forwardRef(() => ForeachEntityTypeDirective),
   forwardRef(() => ForeachPropertyTypeDirective),
-  forwardRef(() => PropertyTypeDirective),
   forwardRef(() => ForeachPropertyDirective),
-  forwardRef(() => PropertyDirective),
   forwardRef(() => ForeachEntityDirective),
-  forwardRef(() => EntityDirective)
+  forwardRef(() => PropertyTypeDirective),
+  forwardRef(() => EntityDirective),
+  forwardRef(() => PropertyDirective)
 ];
 
 @NgModule({

@@ -27,7 +27,7 @@ export class PropertyDirective extends AbstractPortDirective implements OnInit {
 
   public refreshContent() {
     super.refreshContent();
-    
+
     this.createPropertyWidget(this.property, this.port, this.mgForm);
   }
 

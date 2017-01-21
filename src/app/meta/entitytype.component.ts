@@ -1,4 +1,3 @@
-import * as domain from 'domain';
 import { ReflectiveInjector, Injector } from '@angular/core';
 
 import { EntityType } from './entity.type';

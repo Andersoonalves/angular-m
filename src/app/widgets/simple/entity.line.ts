@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { AngularMService } from '../../angular.m.service';
 import { EntityComponent } from '../../meta/entity.component';
-import { FlashMessageService } from '../flash.message.service';
+import { FlashMessageService } from '../router/flash.message.service';
 import { TitleCase } from '../../pipes/titlecase.pipe';
 
 
@@ -19,7 +19,7 @@ import { TitleCase } from '../../pipes/titlecase.pipe';
 })
 export class EntityLineComponent extends EntityComponent {
 
-    constructor(private router: Router, private flash: FlashMessageService, 
+    constructor(private router: Router, private flash: FlashMessageService,
             private angularm: AngularMService) {
         super();
     }
@@ -38,7 +38,7 @@ export class EntityLineComponent extends EntityComponent {
 
     destroy() {
         if (confirm('Are you sure?')) {
-            this.angularm.getService(this.entity.entityType.singular).delete(this.entity.key);
+            this.angularm.delete(this.entity.entityType.singular, this.entity.key);
             let entityTypeName = TitleCase.toTitleCase(this.entity.entityType.singular);
             this.flash.changeMessage(`${entityTypeName} was successfully destroyed.`);
         }

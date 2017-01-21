@@ -3,12 +3,12 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import { AngularMService } from '../angular.m.service';
+import { AngularMService } from '../../angular.m.service';
 import { FlashMessageService } from './flash.message.service';
-import { slideInDownAnimation } from '../animations';
-import { Entity, EntityType } from '../meta/entity.type';
-import { EntityComponent } from '../meta/entity.component';
-import { TitleCase } from '../pipes/titlecase.pipe';
+import { slideInDownAnimation } from './animations';
+import { Entity, EntityType } from '../../meta/entity.type';
+import { EntityComponent } from '../../meta/entity.component';
+import { TitleCase } from '../../pipes/titlecase.pipe';
 
 @Component({
   selector: 'div [mgEditEntity]',
@@ -45,11 +45,11 @@ export class EditEntityComponent extends EntityComponent implements OnInit {
     }
   }
 
-  mapEntityParam(params: Params): Promise<Entity> {
+  mapEntityParam(params: Params): Promise<any> {
     return new Promise((resolve) => {
       this.angularm.findEntityType(params['entitytypename']).then(
         (entityType: EntityType) => {
-          let entityPromisse = this.angularm.getService(entityType.singular).findUnique(params['key']);
+          let entityPromisse = this.angularm.findUnique(entityType.singular, params['key']);
           resolve(entityPromisse);
         }
       );
@@ -59,12 +59,12 @@ export class EditEntityComponent extends EntityComponent implements OnInit {
   ngOnInit() {
     this.route.params
       .switchMap((params: Params) => this.mapEntityParam(params))
-      .subscribe((entity: Entity) => this.configureForm(entity));
+      .subscribe((entity: any) => this.configureForm(entity));
   }
 
   onSubmit(form: any): void {
     console.log(form);
-    this.angularm.getService(this.entity.entityType.singular).edit(this.entity.key, form);
+    this.angularm.edit(this.entity.entityType.singular, this.entity.key, form);
     let entityTypeName = TitleCase.toTitleCase(this.entity.entityType.singular);
     this.flash.changeMessage(`${entityTypeName} was successfully updated.`);
     this.router.navigate([this.entity.entityType.plural, form[this.entity.entityType.tags.id]]);

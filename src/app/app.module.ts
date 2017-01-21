@@ -7,17 +7,16 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AngularMService } from './angular.m.service';
-import { FlashMessageComponent } from './widgets/flash.message.component';
 import { MetaModule } from './meta/meta.module';
-import { WidgetModule } from './widgets/widget.module';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule } from './widgets/router/app-routing.module';
 import { PipesModule } from './pipes/pipes.module';
-import { FlashMessageService } from './widgets/flash.message.service';
+
+import { SIMPLE_WIDGETS_DIRECTIVES } from './widgets/simple/simple.module';
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    FlashMessageComponent
+    AppComponent
   ],
   imports: [
     CommonModule,
@@ -27,20 +26,19 @@ import { FlashMessageService } from './widgets/flash.message.service';
     HttpModule,
     MetaModule,
     AppRoutingModule,
-    PipesModule,
-    WidgetModule
+    PipesModule
   ],
   providers: [
-    FlashMessageService,
     AngularMService
   ],
   exports: [
     CommonModule,
     FormsModule,
-    PipesModule,
-    FlashMessageComponent
+    PipesModule
   ],
-  schemas: [],
+  entryComponents: [
+    SIMPLE_WIDGETS_DIRECTIVES
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
