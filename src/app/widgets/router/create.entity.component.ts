@@ -6,7 +6,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { AngularMService } from '../../angular.m.service';
 import { FlashMessageService } from './flash.message.service';
 import { slideInDownAnimation } from './animations';
-import { EntityType } from '../../meta/entity.type';
 import { EntityTypeComponent } from '../../meta/entitytype.component';
 import { TitleCase } from '../../pipes/titlecase.pipe';
 
@@ -31,7 +30,7 @@ export class CreateEntityComponent extends EntityTypeComponent implements OnInit
     super();
   }
 
-  configureForm(entityType: EntityType) {
+  configureForm(entityType: any) {
     this.entityType = entityType;
     let fbConf = {};
 
@@ -42,14 +41,14 @@ export class CreateEntityComponent extends EntityTypeComponent implements OnInit
     this.myForm = this.fb.group(fbConf);
   }
 
-  mapEntityTypeParam(params: Params): Promise<EntityType> {
+  mapEntityTypeParam(params: Params): Promise<any> {
     return this.angularm.findEntityType(params['entitytypename']);
   }
 
   ngOnInit() {
     this.route.params
       .switchMap((params: Params) => this.mapEntityTypeParam(params))
-      .subscribe((entityType: EntityType) => this.configureForm(entityType));
+      .subscribe((entityType: any) => this.configureForm(entityType));
   }
 
   onSubmit(form: any): void {

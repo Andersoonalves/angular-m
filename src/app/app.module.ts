@@ -38,7 +38,7 @@ import { SIMPLE_WIDGETS_DIRECTIVES } from './widgets/simple/simple.module';
   ],
   entryComponents: [
     SIMPLE_WIDGETS_DIRECTIVES
-  ], 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

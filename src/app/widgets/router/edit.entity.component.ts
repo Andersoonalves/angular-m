@@ -45,7 +45,7 @@ export class EditEntityComponent extends EntityComponent implements OnInit {
     }
   }
 
-  mapEntityParam(params: Params): Promise<Entity> {
+  mapEntityParam(params: Params): Promise<any> {
     return new Promise((resolve) => {
       this.angularm.findEntityType(params['entitytypename']).then(
         (entityType: EntityType) => {
@@ -59,7 +59,7 @@ export class EditEntityComponent extends EntityComponent implements OnInit {
   ngOnInit() {
     this.route.params
       .switchMap((params: Params) => this.mapEntityParam(params))
-      .subscribe((entity: Entity) => this.configureForm(entity));
+      .subscribe((entity: any) => this.configureForm(entity));
   }
 
   onSubmit(form: any): void {

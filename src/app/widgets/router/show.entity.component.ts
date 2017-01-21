@@ -5,7 +5,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { AngularMService } from '../../angular.m.service';
 import { slideInDownAnimation } from './animations';
 import { FlashMessageService } from './flash.message.service';
-import { EntityType, Entity } from '../../meta/entity.type';
+import { EntityType } from '../../meta/entity.type';
 import { EntityComponent } from '../../meta/entity.component';
 
 @Component({
@@ -29,7 +29,7 @@ export class ShowEntityComponent extends EntityComponent implements OnInit {
     super();
   }
 
-  mapEntityParam(params: Params): Promise<Entity> {
+  mapEntityParam(params: Params): Promise<any> {
     return new Promise((resolve) => {
       this.angularm.findEntityType(params['entitytypename']).then(
         (entityType: EntityType) => {
