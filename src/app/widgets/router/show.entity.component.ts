@@ -2,11 +2,11 @@ import 'rxjs/add/operator/switchMap';
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
-import { AngularMService } from '../angular.m.service';
-import { slideInDownAnimation } from '../animations';
+import { AngularMService } from '../../angular.m.service';
+import { slideInDownAnimation } from './animations';
 import { FlashMessageService } from './flash.message.service';
-import { EntityType, Entity } from '../meta/entity.type';
-import { EntityComponent } from '../meta/entity.component';
+import { EntityType, Entity } from '../../meta/entity.type';
+import { EntityComponent } from '../../meta/entity.component';
 
 @Component({
   selector: 'div [mgShowEntity]',

@@ -3,12 +3,12 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
-import { AngularMService } from '../angular.m.service';
+import { AngularMService } from '../../angular.m.service';
 import { FlashMessageService } from './flash.message.service';
-import { slideInDownAnimation } from '../animations';
-import { Entity, EntityType } from '../meta/entity.type';
-import { EntityComponent } from '../meta/entity.component';
-import { TitleCase } from '../pipes/titlecase.pipe';
+import { slideInDownAnimation } from './animations';
+import { Entity, EntityType } from '../../meta/entity.type';
+import { EntityComponent } from '../../meta/entity.component';
+import { TitleCase } from '../../pipes/titlecase.pipe';
 
 @Component({
   selector: 'div [mgEditEntity]',
