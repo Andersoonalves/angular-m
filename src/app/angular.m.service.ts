@@ -31,8 +31,24 @@ export class AngularMService {
         this.domain.addService(service);
     }
 
-    getService(entitytype: string): AbstractDAO {
-        return this.domain.getService(entitytype);
+    listAll(entitytype: string): Promise<any[]> {
+        return this.domain.getService(entitytype).listAll();
+    }
+
+    findUnique(entitytype: string, id: string | number): Promise<any> {
+        return this.domain.getService(entitytype).findUnique(id);
+    }
+
+    edit(entitytype: string, id: string | number, properties: any): Promise<any> {
+        return this.domain.getService(entitytype).edit(id, properties);
+    }
+
+    create(entitytype: string, properties: any): Promise<any> {
+        return this.domain.getService(entitytype).create(properties);
+    }
+
+    delete(entitytype: string, id: string | number): Promise<any> {
+        return this.domain.getService(entitytype).delete(id);
     }
 
     findEntityType(name: string): Promise<EntityType> {

@@ -38,7 +38,7 @@ export class EntityLineComponent extends EntityComponent {
 
     destroy() {
         if (confirm('Are you sure?')) {
-            this.angularm.getService(this.entity.entityType.singular).delete(this.entity.key);
+            this.angularm.delete(this.entity.entityType.singular, this.entity.key);
             let entityTypeName = TitleCase.toTitleCase(this.entity.entityType.singular);
             this.flash.changeMessage(`${entityTypeName} was successfully destroyed.`);
         }

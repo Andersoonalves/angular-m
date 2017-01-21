@@ -53,7 +53,7 @@ export class CreateEntityComponent extends EntityTypeComponent implements OnInit
   }
 
   onSubmit(form: any): void {
-    this.angularm.getService(this.entityType.singular).create(form);
+    this.angularm.create(this.entityType.singular, form);
     let entityTypeName = TitleCase.toTitleCase(this.entityType.singular);
     this.flash.changeMessage(`${entityTypeName} was successfully created.`);
     this.router.navigate([this.entityType.plural, form[this.entityType.tags.id] ]);

@@ -35,7 +35,7 @@ export class ListEntitiesComponent extends EntityTypeComponent implements OnInit
       .subscribe(
       (entity: any) => {
         this.entityType = entity;
-        this.angularm.getService(this.entityType.singular).listAll().then(
+        this.angularm.listAll(this.entityType.singular).then(
           entities => this.entities = entities
         );
       });

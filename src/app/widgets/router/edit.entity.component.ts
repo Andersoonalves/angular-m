@@ -49,7 +49,7 @@ export class EditEntityComponent extends EntityComponent implements OnInit {
     return new Promise((resolve) => {
       this.angularm.findEntityType(params['entitytypename']).then(
         (entityType: EntityType) => {
-          let entityPromisse = this.angularm.getService(entityType.singular).findUnique(params['key']);
+          let entityPromisse = this.angularm.findUnique(entityType.singular, params['key']);
           resolve(entityPromisse);
         }
       );
@@ -64,7 +64,7 @@ export class EditEntityComponent extends EntityComponent implements OnInit {
 
   onSubmit(form: any): void {
     console.log(form);
-    this.angularm.getService(this.entity.entityType.singular).edit(this.entity.key, form);
+    this.angularm.edit(this.entity.entityType.singular, this.entity.key, form);
     let entityTypeName = TitleCase.toTitleCase(this.entity.entityType.singular);
     this.flash.changeMessage(`${entityTypeName} was successfully updated.`);
     this.router.navigate([this.entity.entityType.plural, form[this.entity.entityType.tags.id]]);

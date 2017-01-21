@@ -33,7 +33,7 @@ export class ShowEntityComponent extends EntityComponent implements OnInit {
     return new Promise((resolve) => {
       this.angularm.findEntityType(params['entitytypename']).then(
         (entityType: EntityType) => {
-          let entityPromisse = this.angularm.getService(entityType.singular).findUnique(params['key']);
+          let entityPromisse = this.angularm.findUnique(entityType.singular, params['key']);
           resolve(entityPromisse);
         }
       );

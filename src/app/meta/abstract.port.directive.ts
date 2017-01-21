@@ -31,8 +31,7 @@ export class AbstractPortDirective implements AfterViewInit, OnChanges, OnDestro
   }
 
   protected foreachEntity(entitytype, cb: (entityType: EntityType) => void ) {
-    let service = this.angularm.getService(entitytype.singular);
-    service.listAll().then( entities => {
+    this.angularm.listAll(entitytype.singular).then( entities => {
       entities.forEach( entity => {
         cb(entity);
       });
