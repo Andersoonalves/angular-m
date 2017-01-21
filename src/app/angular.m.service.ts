@@ -1,7 +1,7 @@
 import { Injectable, Type } from '@angular/core';
 
 import { DomainLayer } from './domain/domain.layer';
-import { RuleService, WidgetConnection } from './widgets/rule.service';
+import { RuleService, WidgetConnection } from './meta/rule.service';
 import { EntityType, PropertyType, Property } from './meta/entity.type';
 import { AbstractDAO } from './domain/abstract.dao';
 

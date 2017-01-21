@@ -1,7 +1,7 @@
 import { RuleService, EntityTypeRuleService, PropertyTypeRuleService, PropertyRuleService } from './rule.service';
 import { EntityType } from '../meta/entity.type';
-import { PlainTextComponent } from './simple/plain';
-import { BoldTextComponent } from './simple/bold';
+import { PlainTextComponent } from '../widgets/simple/plain';
+import { BoldTextComponent } from '../widgets/simple/bold';
 
 describe( 'Service: MetadataService', () => {
 

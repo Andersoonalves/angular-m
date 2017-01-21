@@ -9,7 +9,7 @@ import { CreateEntityComponent } from './create.entity.component';
 import { EditEntityComponent } from './edit.entity.component';
 import { HomeComponent } from './home.component';
 import { PageNotFoundComponent } from './not-found.component';
-import { WidgetModule } from '../widget.module';
+import { SimpleModule } from '../simple/simple.module';
 import { PipesModule } from '../../pipes/pipes.module';
 import { MetaModule } from '../../meta/meta.module';
 import { FlashMessageComponent } from './flash.message.component';
@@ -33,7 +33,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     PipesModule,
     MetaModule,
-    WidgetModule
+    SimpleModule
   ],
   declarations: [
     FlashMessageComponent,

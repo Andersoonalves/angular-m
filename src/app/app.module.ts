@@ -8,9 +8,11 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AngularMService } from './angular.m.service';
 import { MetaModule } from './meta/meta.module';
-import { WidgetModule } from './widgets/widget.module';
 import { AppRoutingModule } from './widgets/router/app-routing.module';
 import { PipesModule } from './pipes/pipes.module';
+
+import { SIMPLE_WIDGETS_DIRECTIVES } from './widgets/simple/simple.module';
+
 
 @NgModule({
   declarations: [
@@ -24,8 +26,7 @@ import { PipesModule } from './pipes/pipes.module';
     HttpModule,
     MetaModule,
     AppRoutingModule,
-    PipesModule,
-    WidgetModule
+    PipesModule
   ],
   providers: [
     AngularMService
@@ -35,7 +36,9 @@ import { PipesModule } from './pipes/pipes.module';
     FormsModule,
     PipesModule
   ],
-  schemas: [],
+  entryComponents: [
+    SIMPLE_WIDGETS_DIRECTIVES
+  ], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }
