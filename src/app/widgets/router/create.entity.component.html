@@ -4,11 +4,12 @@
   <form [formGroup]="myForm"  
           (ngSubmit)="onSubmit(myForm.value)">
 
-    <div 
+    <label 
       *ngFor="let propertyType of entityType.propertyTypes" 
       [mgPropertyType]="'form_line'" 
       [propertyType]="propertyType" 
-      [mgForm]="myForm"></div>
+      [mgForm]="myForm"
+      for="{{propertyType.entityType.singular}}_{{propertyType.name}}">{{propertyType.name | titleCase}}</label>
 
     <input type="submit" value="Create {{ entityType.singular | titleCase }}">
   </form> 

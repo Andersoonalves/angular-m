@@ -119,3 +119,5 @@ export class AngularMService {
 export let et = (singular: string, plural: string, tags?: any, ... propertyTypes: PropertyType[]): EntityType => {
     return new EntityType(singular, plural, tags);
 };
+
+export let entityType = et;

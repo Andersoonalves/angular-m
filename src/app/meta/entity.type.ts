@@ -8,9 +8,13 @@ export class EntityType {
         }
     }
 
-    pt(name: string, type: string): EntityType {
-        this.propertyTypes.push(new PropertyType(this, name, type));
+    pt(name: string, type: string, tags?: any): EntityType {
+        this.propertyTypes.push(new PropertyType(this, name, type, tags));
         return this;
+    }
+
+    propertyType(name: string, type: string, tags?: any): EntityType {
+        return this.pt(name, type, tags);
     }
 
     get properties(): PropertyType[] {
