@@ -10,6 +10,7 @@ import { AngularMService } from './angular.m.service';
 import { MetaModule } from './meta/meta.module';
 import { AppRoutingModule } from './widgets/router/app-routing.module';
 import { PipesModule } from './pipes/pipes.module';
+import {DndModule} from 'ng2-dnd';
 
 import { SIMPLE_WIDGETS_DIRECTIVES } from './widgets/simple/simple.module';
 
@@ -26,7 +27,8 @@ import { SIMPLE_WIDGETS_DIRECTIVES } from './widgets/simple/simple.module';
     HttpModule,
     MetaModule,
     AppRoutingModule,
-    PipesModule
+    PipesModule,
+    DndModule.forRoot()
   ],
   providers: [
     AngularMService

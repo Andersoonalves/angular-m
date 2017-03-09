@@ -14,6 +14,7 @@ import { PipesModule } from '../../pipes/pipes.module';
 import { MetaModule } from '../../meta/meta.module';
 import { FlashMessageComponent } from './flash.message.component';
 import { FlashMessageService } from './flash.message.service';
+import { EntityGeneratorComponent } from "./entity-generator.component";
 
 
 const appRoutes: Routes = [
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
   { path: ':entitytypename/new', component: CreateEntityComponent },
   { path: ':entitytypename/:key', component: ShowEntityComponent },
   { path: ':entitytypename/:key/edit', component: EditEntityComponent },
+  { path: 'generator', component: EntityGeneratorComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -42,7 +44,8 @@ const appRoutes: Routes = [
     ListEntitiesComponent,
     ShowEntityComponent,
     CreateEntityComponent,
-    EditEntityComponent
+    EditEntityComponent,
+    EntityGeneratorComponent
   ],
   exports: [
     RouterModule,
@@ -53,7 +56,8 @@ const appRoutes: Routes = [
     ListEntitiesComponent,
     ShowEntityComponent,
     CreateEntityComponent,
-    EditEntityComponent
+    EditEntityComponent,
+    EntityGeneratorComponent
   ],
   providers: [
     FlashMessageService
